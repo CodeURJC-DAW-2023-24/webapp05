@@ -73,7 +73,7 @@ body {
     border-radius: 4px;
     width: 280px;
 }
-.form-area form input[type=email], form input[type=password] {
+.form-area form input[type=email], form input[type=password], form input[type=text] {
     padding: 13px 0 13px 4px;
     margin-bottom: 5px;
     border: 1px solid var(--cl-gray-light);
