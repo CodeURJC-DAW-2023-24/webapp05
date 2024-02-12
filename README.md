@@ -25,7 +25,7 @@ Trello: https://trello.com/b/xBmOw4l7/daw
 
 
 
->### Imagenes
+>### Imágenes
 > Posts, fotos de perfil y enviar en los chats.
 
 >### Gráficos
@@ -36,4 +36,41 @@ Trello: https://trello.com/b/xBmOw4l7/daw
 
 >### Algoritmo o consulta avanzada
 > Algoritmo para recomendar personas a los usuarios.
+
+## Pantallas
+
+### Pantalla login
+![Pantalla login.jpg](Pantallas%2FPantalla%20login.jpg)
+
+### Pantalla registro
+![Pantalla registro.jpg](Pantallas%2FPantalla%20registro.jpg)
+
+### Patalla inicial
+![Pantalla incial post.jpg](Pantallas%2FPantalla%20incial%20post.jpg)
+
+### Pantalla perfil
+![Pantalla perfil.jpg](Pantallas%2FPantalla%20perfil.jpg)
+
+### Pantalla comentarios
+![Pantalla comentarios.png](Pantallas%2FPantalla%20comentarios.png)
+
+### Pantalla crear post
+![Pantalla crear post.jpg](Pantallas%2FPantalla%20crear%20post.jpg)
+
+### Pantalla estadísticas
+![Pantalla estadisticas.jpg](Pantallas%2FPantalla%20estadisticas.jpg)
+
+### Pantalla admin
+![Pantalla admin.jpg](Pantallas%2FPantalla%20admin.jpg)
+
+
+
+
+
+
+
+
+
+
+
 
