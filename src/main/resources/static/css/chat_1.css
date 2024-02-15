@@ -1755,3 +1755,9 @@ button.log_btn:hover {
 .sign_up .content .download div img {
   height: 40px;
 }/*# sourceMappingURL=main.css.map */
+
+.plusbutton{
+  max-width: 35px;
+  max-height: 35px;
+  vertical-align: bottom;
+}

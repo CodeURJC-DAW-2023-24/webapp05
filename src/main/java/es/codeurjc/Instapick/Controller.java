@@ -2,7 +2,6 @@ package es.codeurjc.Instapick;
 
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 
 @org.springframework.stereotype.Controller
 public class Controller {
@@ -19,6 +18,16 @@ public class Controller {
     @GetMapping("/user")
     public String getUser(Model model) {
         return "profile";
+    }
+
+    @GetMapping("/chats")
+    public String getChats(Model model) {
+        return "chat";
+    }
+
+    @GetMapping("/new_post")
+    public String getNewPost(Model model) {
+        return "new_post";
     }
 
 }
