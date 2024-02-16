@@ -21,4 +21,34 @@ public class Controller {
         return "profile";
     }
 
+    @GetMapping("/signup")
+    public String getSignup(Model model) {
+        return "signup";
+    }
+
+    @GetMapping("/admin")
+    public String getAdmin(Model model) {
+        return "admin";
+    }
+
+    @GetMapping("/newpost")
+    public String getNewPost(Model model) {
+        return "new_post";
+    }
+    
+    @GetMapping("/profile")
+    public String getProfile(Model model) {
+        return "profile";
+    }
+    
+    @GetMapping("/grafic")
+    public String getGrafic(Model model) {
+        return "Grafic";
+    }
+
+    @GetMapping("/chat")
+    public String getChat(Model model) {
+        return "chat";
+    }
+    
 }
