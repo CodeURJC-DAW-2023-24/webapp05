@@ -1,12 +1,40 @@
-package Model;
+package es.codeurjc.Instapick.Model;
 
-import org.springframework.data.annotation.Id;
-
+import javax.persistence.*;
 import java.util.ArrayList;
 
-public class Chat extends Comment{
-    //@Id
+@Entity
+public class Chat extends Comment {
+    @Id
+    @GeneratedValue
     private long id;
 
-    private ArrayList<Long> users;
+    @ManyToMany
+    private ArrayList<User> users;
+    @OneToMany
+    private ArrayList<Comment> coments;
+
+    public ArrayList<Comment> getComents() {
+        return coments;
+    }
+
+    public void setComents(ArrayList<Comment> coments) {
+        this.coments = coments;
+    }
+
+    public long getId() {
+        return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
+    }
+
+    public ArrayList<User> getUsers() {
+        return users;
+    }
+
+    public void setUsers(ArrayList<User> users) {
+        this.users = users;
+    }
 }

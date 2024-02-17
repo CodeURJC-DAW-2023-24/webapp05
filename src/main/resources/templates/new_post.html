@@ -223,23 +223,18 @@
           <div class="posts">
             <article class="post">
 
-              <div class="post__footer">
+              <form class="post__footer" action="/addNewPost" method="post">
 
                 <div class="post__infos">
-
-
 
                   <div id="photo-container" class="post_image">
                     <div class="col-xl-2 col-lg-2 col-md-3 col-sm-4 col-xs-12" id="add-photo-container">
                       <div class="add-new-photo first" id="add-photo">
                         <span><i class="icon-camera"></i></span>
                       </div>
-                      <input type="file" multiple id="add-new-photo" name="images[]" onchange="previewImages(this)">
+                      <input type="file" multiple id="add-new-photo" name="images" onchange="previewImages(this)">
                     </div>
                   </div>
-
-
-
 
                   <div class="post__description">
                     <a>Descripción:  </a>
@@ -251,7 +246,7 @@
 
 
                 </div>
-              </div>
+              </form>
             </article>
 
           </div>
