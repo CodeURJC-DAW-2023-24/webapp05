@@ -55,4 +55,20 @@ public class Controller {
     public void postMethodName(@RequestBody String entity) {
         System.out.println("Los datos són ::" + entity);
     }
+    
+    @GetMapping("/grafic")
+    public String getGrafic(Model model) {
+        return "Grafic";
+    }
+
+    @GetMapping("/admin")
+    public String getAdmin(Model model) {
+        return "admin";
+    }
+
+    @GetMapping("/signup")
+    public String getSignup(Model model) {
+        return "signup";
+    }
+
 }
