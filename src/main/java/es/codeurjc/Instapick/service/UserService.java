@@ -13,25 +13,25 @@ public class UserService {
 
     private UserRepository users;
 
-    public void save(User user){
+    public void save(User user) {
         users.save(user);
     }
 
-    public List<User> findAll(){
+    public List<User> findAll() {
         return users.findAll();
     }
 
-    public Optional<User> findById(Long id){
+    public Optional<User> findById(Long id) {
         return users.findById(id);
     }
 
-    public void replace(User updatedPost){
+    public void replace(User updatedPost) {
         users.findById(updatedPost.getId()).orElseThrow();
 
         users.save(updatedPost);
     }
 
-    public  void deleteById(Long id){
+    public void deleteById(Long id) {
         users.deleteById(id);
     }
 }

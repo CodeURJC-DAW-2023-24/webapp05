@@ -13,25 +13,25 @@ public class PostService {
 
     private PostRepository posts;
 
-    public void save(Post post){
+    public void save(Post post) {
         posts.save(post);
     }
 
-    public List<Post> findAll(){
+    public List<Post> findAll() {
         return posts.findAll();
     }
 
-    public Optional<Post> findById(Long id){
+    public Optional<Post> findById(Long id) {
         return posts.findById(id);
     }
 
-    public void replace(Post updatedPost){
+    public void replace(Post updatedPost) {
         posts.findById(updatedPost.getId()).orElseThrow();
 
         posts.save(updatedPost);
     }
 
-    public  void deleteById(Long id){
+    public void deleteById(Long id) {
         posts.deleteById(id);
     }
 

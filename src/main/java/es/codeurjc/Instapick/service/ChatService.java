@@ -13,25 +13,25 @@ public class ChatService {
 
     private ChatService chats;
 
-    public void save(Chat chat){
+    public void save(Chat chat) {
         chats.save(chat);
     }
 
-    public List<Chat> findAll(){
+    public List<Chat> findAll() {
         return chats.findAll();
     }
 
-    public Optional<Chat> findById(Long id){
+    public Optional<Chat> findById(Long id) {
         return chats.findById(id);
     }
 
-    public void replace(Chat updatedChat){
+    public void replace(Chat updatedChat) {
         chats.findById(updatedChat.getId()).orElseThrow();
 
         chats.save(updatedChat);
     }
 
-    public  void deleteById(Long id){
+    public void deleteById(Long id) {
         chats.deleteById(id);
     }
 
