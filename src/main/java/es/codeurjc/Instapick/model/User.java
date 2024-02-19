@@ -12,8 +12,19 @@ public class User {
     private long id;
     private String userName;
     private String password;
+    private String name;
+    private String email;
     private Rol rol;
     private Blob avatar;
+
+
+    
+    public User(String userName, String password, String name, String email) {
+        this.userName = userName;
+        this.password = password;
+        this.name = name;
+        this.email = email;
+    }
 
     @ManyToMany
     private List<User> friends;
