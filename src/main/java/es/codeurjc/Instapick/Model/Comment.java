@@ -1,15 +1,12 @@
 package es.codeurjc.Instapick.Model;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.ManyToOne;
+import javax.persistence.*;
 import java.util.Date;
 
 @Entity
 public class Comment {
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
     @ManyToOne
     private User writer;
@@ -45,6 +42,12 @@ public class Comment {
     }
 
     public void setDate(Date date) {
+        this.date = date;
+    }
+
+    public Comment(User writer, String text, Date date) {
+        this.writer = writer;
+        this.text = text;
         this.date = date;
     }
 }

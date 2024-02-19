@@ -4,9 +4,9 @@ import javax.persistence.*;
 import java.util.ArrayList;
 
 @Entity
-public class Chat extends Comment {
+public class Chat{
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
 
     @ManyToMany

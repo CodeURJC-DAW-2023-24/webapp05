@@ -9,7 +9,7 @@ import javax.persistence.*;
 @Entity
 public class User {
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
     private Blob avatar;
     private String userName;

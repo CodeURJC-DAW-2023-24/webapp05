@@ -6,7 +6,7 @@ import java.sql.Blob;
  @Entity
 public class Post {
      @Id
-     @GeneratedValue
+     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
     private String description;
     private Blob multimedia;
@@ -38,4 +38,11 @@ public class Post {
     public void setMultimedia(Blob multimedia) {
         this.multimedia = multimedia;
     }
-}
+
+     public Post(String description, Blob multimedia, User creator, PostComment comments) {
+         this.description = description;
+         this.multimedia = multimedia;
+         this.creator = creator;
+         this.comments = comments;
+     }
+ }
