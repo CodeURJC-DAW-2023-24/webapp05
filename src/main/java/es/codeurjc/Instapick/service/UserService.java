@@ -1,6 +1,6 @@
 package es.codeurjc.Instapick.service;
 
-import es.codeurjc.Instapick.Model.User;
+import es.codeurjc.Instapick.model.User;
 import es.codeurjc.Instapick.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -11,6 +11,7 @@ import java.util.Optional;
 @Service
 public class UserService {
 
+    @Autowired
     private UserRepository users;
 
     public void save(User user) {

@@ -1,10 +1,7 @@
 package es.codeurjc.Instapick.service;
 
-import es.codeurjc.Instapick.Model.Comment;
-import es.codeurjc.Instapick.Model.Post;
+import es.codeurjc.Instapick.model.Comment;
 import es.codeurjc.Instapick.repository.CommentRepository;
-import es.codeurjc.Instapick.repository.PostRepository;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;

@@ -1,8 +1,8 @@
 package es.codeurjc.Instapick.service;
 
-import es.codeurjc.Instapick.Model.Chat;
-import es.codeurjc.Instapick.Model.Post;
-import org.springframework.beans.factory.annotation.Autowired;
+import es.codeurjc.Instapick.model.Chat;
+import es.codeurjc.Instapick.repository.ChatRepository;
+
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -11,7 +11,7 @@ import java.util.Optional;
 @Service
 public class ChatService {
 
-    private ChatService chats;
+    private ChatRepository chats;
 
     public void save(Chat chat) {
         chats.save(chat);

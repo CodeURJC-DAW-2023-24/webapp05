@@ -1,4 +1,4 @@
-package es.codeurjc.Instapick.Model;
+package es.codeurjc.Instapick.model;
 
 public enum Rol {
     normal,admin,visitant;
