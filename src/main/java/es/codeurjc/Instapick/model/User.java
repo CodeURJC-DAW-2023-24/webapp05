@@ -18,7 +18,10 @@ public class User {
     private Blob avatar;
 
 
-    
+    public User() {
+        
+    }
+
     public User(String userName, String password, String name, String email) {
         this.userName = userName;
         this.password = password;
@@ -75,4 +78,22 @@ public class User {
     public List<Post> getPosts(){
         return posts;
     }
+    public String getPassword() {
+        return password;
+    }
+
+    public Blob getAvatar() {
+        return avatar;
+    }
+
+    public List<Chat> getChats() {
+        return chats;
+    }
+
+    public void setRol(Rol rol) {
+        this.rol = rol;
+    }
+
+    
+
 }

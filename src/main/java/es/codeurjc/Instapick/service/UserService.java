@@ -35,4 +35,8 @@ public class UserService {
     public void deleteById(Long id) {
         users.deleteById(id);
     }
+
+    public User findByUserName(String userName) {
+        return users.findByUserName(userName);
+    }
 }
