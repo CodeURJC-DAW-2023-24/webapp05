@@ -9,7 +9,7 @@ import java.util.List;
 public class Post {
     @Id
     private long id;
-
+    private int likes;
     private String description;
     private Blob multimedia;
 
@@ -25,5 +25,21 @@ public class Post {
 
     public void setId(long id) {
         this.id = id;
+    }
+
+    public User getAuthor(){
+        return author;
+    }
+
+    public List<PostComment> getComments(){
+        return comments;
+    }
+
+    public int getLikes(){
+        return likes;
+    }
+    
+    public String getDescription(){
+        return description;
     }
  }
