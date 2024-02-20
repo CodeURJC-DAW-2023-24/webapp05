@@ -11,11 +11,17 @@ public class Comment {
     @ManyToOne
     private Chat chatFather;
 
+    private String comment;// contenido de la clase
+
     public long getId() {
         return id;
     }
 
     public void setId(long id) {
         this.id = id;
+    }
+
+    public String getComment(){
+        return comment;
     }
 }

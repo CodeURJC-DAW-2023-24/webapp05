@@ -10,9 +10,9 @@ import java.util.Map;
 public class User {
     @Id
     private long id;
-    private String userName;
+    private String userName; //nombre de cuenta del usuario
     private String password;
-    private String name;
+    private String name; //nombre real de usuario
     private String email;
     private Rol rol;
     private Blob avatar;
@@ -41,4 +41,38 @@ public class User {
         this.id = id;
     }
 
+    public String getUserName(){
+        return userName;
+    }
+    public void setUserName(String userName){
+        this.userName=userName;
+    }
+
+    public String getName(){
+        return name;
+    }
+
+    public void setName(String name){
+        this.name=name;
+    }
+
+    public String getEmail(){
+        return email;
+    }
+
+    public void setEmail(String email){
+        this.email=email;
+    }
+
+    public Rol getRol(){
+        return rol;
+    }
+
+    public List<User> getFriends(){
+        return friends;
+    }
+
+    public List<Post> getPosts(){
+        return posts;
+    }
 }
