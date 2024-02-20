@@ -508,6 +508,7 @@
             </button>
           </div>
 
+          {{#postToShow}}
           <div class="posts">
             <article class="post">
               <div class="post__header">
@@ -556,7 +557,7 @@
                 <div class="post__medias">
                   <img
                     class="post__media"
-                    src="assets/logo.jpg"
+                    src=/imagePost/{{id}}
                     alt="Post Content"
                   />
                 </div>
@@ -652,14 +653,7 @@
 
                   <div class="post__description">
                     <span>
-                      <a
-                        class="post__name--underline"
-                        href="https://github.com/leocosta1"
-                        target="_blank"
-                        >leocosta1</a
-                      >
-                      Responsive clone of Instagram UI. Made with ❤ for study
-                      purposes.
+                      {{description}}
                     </span>
                   </div>
 
@@ -669,6 +663,7 @@
             </article>
             
           </div>
+          {{/postToShow}}
         </div>
 
         <section class="side-menu">

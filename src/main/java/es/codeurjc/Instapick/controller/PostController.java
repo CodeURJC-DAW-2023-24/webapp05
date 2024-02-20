@@ -24,14 +24,14 @@ public class PostController {
         return "post";
     }
 
-    @GetMapping("/")
+    /*@GetMapping("/")
     public Page<Post> getPostsByAuthor(@RequestParam(required = false) String requesteduser, Pageable page){ // Search request to find posts by X author
         if (requesteduser != null){ // The user exists
             return posts.findByAuthor(requesteduser, page);
         } else{ // The user does not exist
             return posts.findAll(page);
         }
-    }
+    }*/
 
     
 }

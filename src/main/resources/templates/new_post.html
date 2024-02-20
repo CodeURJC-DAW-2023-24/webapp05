@@ -223,7 +223,7 @@
           <div class="posts">
             <article class="post">
 
-              <form class="post__footer" action="/addNewPost" method="post">
+              <form class="post__footer" action="/addNewPost" method="post" enctype="multipart/form-data">
 
                 <div class="post__infos">
 
@@ -232,13 +232,13 @@
                       <div class="add-new-photo first" id="add-photo">
                         <span><i class="icon-camera"></i></span>
                       </div>
-                      <input type="file" multiple id="add-new-photo" name="images" onchange="previewImages(this)">
+                      <input type="file" multiple id="image" name="image" onchange="previewImages(this)">
                     </div>
                   </div>
 
                   <div class="post__description">
                     <a>Descripción:  </a>
-                    <input type="text" name="description">
+                    <input type="text" name="description" id="description">
 
                   </div>
                   <button class="cancel-button">Cancelar</button>
