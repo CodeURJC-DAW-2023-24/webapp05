@@ -67,4 +67,12 @@ public class User {
     public Rol getRol(){
         return rol;
     }
+
+    public List<User> getFriends(){
+        return friends;
+    }
+
+    public List<Post> getPosts(){
+        return posts;
+    }
 }

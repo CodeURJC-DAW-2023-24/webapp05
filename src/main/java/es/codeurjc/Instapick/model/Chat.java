@@ -21,4 +21,12 @@ public class Chat{
     public void setId(long id) {
         this.id = id;
     }
+
+    public List<User> getUsers(){
+        return users;
+    }
+
+    public List<Comment> getComments(){
+        return comments;
+    }
 }
