@@ -15,6 +15,8 @@ public class PostComment {
     @ManyToOne
     private Post fatherPost;
 
+    private String comment;// contenido de la clase
+
     public long getId() {
         return id;
     }
@@ -23,4 +25,7 @@ public class PostComment {
         this.id = id;
     }
 
+    public String getComment(){
+        return comment;
+    }
 }

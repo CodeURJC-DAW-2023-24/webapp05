@@ -9,7 +9,7 @@ import java.util.List;
 public class Post {
     @Id
     private long id;
-    private int likes;
+    private int likes; // cantidad de gente a la que le gusta
     private String description;
     private Blob multimedia;
 
