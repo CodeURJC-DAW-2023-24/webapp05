@@ -26,20 +26,30 @@
                 <div class="logo">
                     <img src="img/logo.jpg" alt="Instapick Logo">
                 </div>
-                <form>
-                    <input type="email" name="username" id="username" placeholder="Teléfono, nombre de usuario o e-mail">
+
+                <form action="/login" method="post">
+                    <input type="username" name="username" id="username" placeholder="Teléfono, nombre de usuario o e-mail">
                     <input type="password" name="password" id="password" placeholder="Contraseña">
+
+                    {{#incorrect}}
+                    <a>El nombre de ususario o contraseña introducido es incorrecto</a>
+                    {{/incorrect}}
+
                     <input type="submit" name="submit" value="Entrar">
+
                     <div class="other-option">
                         <div></div> <p>O</p> <div></div>
                     </div>
+
                     <div class="options">
                         <a href="#" class="social"> <span><i class="fab fa-facebook-square"></i></span> Entrar con Facebook </a>
                         <div class="forget"> <a href="#">¿Olvidaste tu contraseña?</a> </div>
                     </div>
+
                 </form>
+
                 <div class="noaccount">
-                    <a href="signup">¿No tienes cuenta? <span>Regístrese</span></a>
+                    <a href="/signup">¿No tienes cuenta? <span>Regístrese</span></a>
                 </div>
                 <div class="apps">
                     <p>Obtén la aplicación</p>

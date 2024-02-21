@@ -19,7 +19,7 @@ public class User {
 
 
     public User() {
-        
+
     }
 
     public User(String userName, String password, String name, String email) {
@@ -94,6 +94,6 @@ public class User {
         this.rol = rol;
     }
 
-    
+
 
 }

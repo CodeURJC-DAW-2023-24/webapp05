@@ -2,6 +2,7 @@ package es.codeurjc.Instapick.service;
 
 import es.codeurjc.Instapick.model.Post;
 import es.codeurjc.Instapick.repository.PostRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -10,6 +11,7 @@ import java.util.Optional;
 @Service
 public class PostService {
 
+    @Autowired
     private PostRepository posts;
 
     public void save(Post post) {

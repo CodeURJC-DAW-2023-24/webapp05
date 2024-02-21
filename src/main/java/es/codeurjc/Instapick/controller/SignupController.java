@@ -24,16 +24,12 @@ public class SignupController {
     public String createUser(@RequestParam String email, @RequestParam String name, @RequestParam String username,
      @RequestParam String password) {
 
-        System.out.println(username);
-        System.out.println(password);
-        System.out.println(name);
-        System.out.println(email);
-
         User user = new User(username, password, email, name);
-        
+        user.setRol(Rol.normal);
+
         users.save(user);
 
-        return "log_in";
+        return "redirect:/login";
     }
 
     @GetMapping("/signup")
