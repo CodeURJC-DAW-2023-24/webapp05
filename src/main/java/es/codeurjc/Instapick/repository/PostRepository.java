@@ -2,11 +2,13 @@ package es.codeurjc.Instapick.repository;
 
 import es.codeurjc.Instapick.model.Post;
 
-import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
+
+import java.util.List;
 
 @Repository
 public interface PostRepository extends JpaRepository<Post, Long> {
@@ -14,4 +16,7 @@ public interface PostRepository extends JpaRepository<Post, Long> {
     org.springframework.data.domain.Page<Post> findAll(Pageable page); // Find all posts
     /* YET TO IMPLEMENT --> org.springframework.data.domain.Page<Post> findFriendsFirst(String author, Pageable page); */
     /* YET TO IMPLEMENT --> org.springframework.data.domain.Page<Post> findMostLiked(String author, Pageable page); */
+    //List<Post> findTop10ByLikes();
+    List<Post> findByOrderByLikesDesc();
+
 }

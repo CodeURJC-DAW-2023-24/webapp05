@@ -1,16 +1,24 @@
 package es.codeurjc.Instapick.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 
 import es.codeurjc.Instapick.model.Post;
-import es.codeurjc.Instapick.repository.PostRepository;
 import es.codeurjc.Instapick.service.PostService;
 
+import java.util.List;
+import java.util.Optional;
+
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.fasterxml.jackson.annotation.JsonView;
+
+import org.springframework.web.bind.annotation.PathVariable;
 
 @Controller
 public class PostController {
@@ -19,19 +27,10 @@ public class PostController {
     private PostService posts;
 
     @GetMapping("/posts")
-    public String getMethodName(){ // Main page, to implement
-        
+    public String getMethodName(Model model) {
+        // List<Post> postsToShow = posts.findAll();
+        // model.addAttribute("postToShow", postsToShow);
         return "post";
     }
 
-    /*@GetMapping("/")
-    public Page<Post> getPostsByAuthor(@RequestParam(required = false) String requesteduser, Pageable page){ // Search request to find posts by X author
-        if (requesteduser != null){ // The user exists
-            return posts.findByAuthor(requesteduser, page);
-        } else{ // The user does not exist
-            return posts.findAll(page);
-        }
-    }*/
-
-    
 }

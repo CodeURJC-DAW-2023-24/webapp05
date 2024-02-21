@@ -6,7 +6,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="shortcut icon" href="assets/logo-background-removed.png" type="image/x-icon" />
     <link rel="stylesheet" type="text/css" href="css/post.css" />
-    <script src="js/post_app.js" defer></script>
   </head>
 
   <body>
@@ -507,7 +506,8 @@
               </svg>
             </button>
           </div>
-
+          <div class="posts" id="postZone">
+          </div>
           {{#postToShow}}
           <div class="posts">
             <article class="post">
@@ -565,7 +565,7 @@
 
               <div class="post__footer">
                 <div class="post__buttons">
-                  <button class="post__button">
+                  <button class="post__button" onclick="sendLike({{id}})">
                     <svg
                       width="24"
                       height="24"
@@ -644,10 +644,10 @@
                       <img src="assets/default-user.png" alt="User Picture" />
                     </a>
 
-                    <span
+                    <spanf.js
                       >Liked by
                       <a class="post__name--underline" href="#">user123</a> and
-                      <a href="#">73 others</a></span
+                      <a href="#">73 others</a></spanf.js
                     >
                   </div>
 
@@ -898,5 +898,6 @@
         </div>
       </button>
     </nav>
+    <script src="js/post_app.js" defer></script>
   </body>
 </html>

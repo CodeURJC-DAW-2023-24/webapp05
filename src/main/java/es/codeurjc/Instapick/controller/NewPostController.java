@@ -28,25 +28,27 @@ public class NewPostController {
     public String getNewPost() {
         return "new_post";
     }
+
     private static final Path IMAGES_FOLDER = Paths.get(System.getProperty("user.dir"), "images");
+
     @PostMapping("/addNewPost")
     public String addNewPost(@RequestParam String description, @RequestParam MultipartFile image, Model model)
             throws IOException {
         Post newPost = new Post(description, BlobProxy.generateProxy(image.getInputStream(), image.getSize()));
         posts.save(newPost);
         String redirect = "redirect:/showSpecificPost/".concat(Long.toString(newPost.getId()));
-        return "error";
+        return redirect;
     }
 
     @GetMapping("/showSpecificPost/{id}")
     public String getMethodName(@PathVariable long id, Model model) {
         Optional<Post> postById = posts.findById(id);
-        if(postById.isPresent()) {
+        if (postById.isPresent()) {
             ArrayList<Post> postToShow = new ArrayList<>();
             postToShow.add(postById.get());
             model.addAttribute("postToShow", postToShow);
             return "post";
-        }else {
+        } else {
             return "error";
         }
     }
