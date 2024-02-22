@@ -4,7 +4,6 @@ import jakarta.persistence.*;
 
 import java.sql.Blob;
 import java.util.List;
-import java.util.Map;
 
 @Entity
 public class User {
@@ -22,7 +21,7 @@ public class User {
 
     }
 
-    public User(String userName, String password, String name, String email) {
+    public User(String userName, String password, String email, String name) {
         this.userName = userName;
         this.password = password;
         this.name = name;
