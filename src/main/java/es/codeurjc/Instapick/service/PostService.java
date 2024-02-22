@@ -20,16 +20,8 @@ public class PostService {
         posts.save(post);
     }
 
-    public List<Post> findAll() { // Unpaginated findAll
+    public List<Post> findAll() {
         return posts.findAll();
-    }
-
-    public Page<Post> findAll(PageRequest of) { // Paginated findAll
-        return posts.findAll(of);
-    }
-    
-    public List<Post> findBySort() {
-        return posts.findByOrderByLikesDesc();
     }
 
     public Optional<Post> findById(Long id) {
@@ -38,10 +30,20 @@ public class PostService {
 
     public void replace(Post updatedPost) {
         posts.findById(updatedPost.getId()).orElseThrow();
+
         posts.save(updatedPost);
     }
 
     public void deleteById(Long id) {
         posts.deleteById(id);
+    }
+
+    public List<Post> findBySort() {
+        return posts.findByOrderByLikesDesc();
+    }
+
+
+    public Page<Post> findAll(PageRequest of) {
+        return posts.findAll(of);
     }
 }
