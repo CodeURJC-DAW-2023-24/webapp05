@@ -283,6 +283,7 @@ img {
   flex-direction: column;
   flex: 1;
   gap: 8px;
+  min-height: 400px;
 }
 
 .stories__left-button,
