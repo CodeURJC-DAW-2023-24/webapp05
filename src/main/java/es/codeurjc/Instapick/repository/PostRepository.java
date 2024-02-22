@@ -13,7 +13,6 @@ import java.util.List;
 @Repository
 public interface PostRepository extends JpaRepository<Post, Long> {
     /* UNPAGINATED SEARCH QUERIES */
-        List<Post> findAll(); // Find all posts
         List<Post> findByOrderByLikesDesc(); // Find posts by most liked first
         List<Post> findTop10ByLikes(); // Find top 10 comments based on likes
     /* PAGINATED SEARCH QUERIES */
