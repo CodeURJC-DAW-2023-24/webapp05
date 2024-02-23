@@ -937,6 +937,13 @@ img {
 
   display: none;
   flex-direction: column;
+  background-color: var(--primary);
+  height: 550px;
+  margin: 4px, 4px;
+  padding: 4px;
+  overflow-x: hidden;
+  overflow-y: auto;
+  text-align: justify;
 }
 
 .profileCommentImage{
