@@ -2,6 +2,22 @@ let btnColor = document.getElementById("colorBtn")
 let postToAdd = 3
 let from = 0
 let to = from + postToAdd
+let postIdForComments
+
+const sleep = async(millisec) => {
+    await new Promise(resolve => {
+        return setTimeout(resolve, millisec)
+    })
+}
+
+function showHildeAnimation(){
+    let loadAnim = document.getElementById("loaderAnim")
+    if(loadAnim.style.display == "none"){
+        loadAnim.style.display == "block"
+    }else{
+        loadAnim.style.display == "none"
+    }
+}
 
 function changeColor(){
     let logo = document.getElementById("logo") 
@@ -12,6 +28,17 @@ function changeColor(){
     }else{
         logo.src = "assets/logo-negro.png"
         htmlMain.classList = "lightTheme"
+    }
+}
+
+//Follow
+async function followPerson(me, who){
+    let response = await fetch(`/addFriend?me=${me}&who=${who}`,{
+        method: "PUT"
+    })
+    let responseObj = await response.json()
+    if(responseObj == false){
+        alert("Follow Error")
     }
 }
 
@@ -30,6 +57,7 @@ let observer = new IntersectionObserver((input, observator) => {
         if(element.isIntersecting){
             //from = to
             to++
+            showHildeAnimation()
             chargeMorePost()
         }
     });
@@ -48,6 +76,45 @@ async function chargeMorePost(){
     });
     let postInScreen = document.querySelectorAll('.post')
     observer.observe(postInScreen[postInScreen.length - 1]) 
+    showHildeAnimation()
+}
+
+function showHideCommentSection(){
+  let comments = document.getElementById("commentSection")
+  let normalZone = document.getElementById("normalZone")
+  let fetchCom
+  if(comments.style.display == "none"){
+    comments.style.display = "block"
+    normalZone.style.display = "none"
+    fetchCom = true
+  }else{
+    comments.style.display = "none"
+    normalZone.style.display = "block"
+    fetchCom = false
+  }
+  return fetchCom
+}
+
+async function openComments(id){
+  let fetchComment = showHideCommentSection()
+  if (fetchComment){
+    let comments = document.getElementById("commentsZone")
+    comments.innerHTML = ""
+    postIdForComments = id
+    let response = await fetch(`/getCommentsOfPost?id=${id}`)
+    let responseObj = await response.json()
+    responseObj.forEach(element => {
+      comments.innerHTML += jsonCommentToHTML(element)
+    });
+  }
+}
+
+async function sendComment(){
+  let text = document.getElementById("inputTextComment").value
+  let response = await fetch(`/sendCommenToPost?id=${postIdForComments}&text=${text}`, {method:"PUT"})
+  let responseObj = await response.json()
+  let commentsZone = document.getElementById("commentsZone")
+  commentsZone.innerHTML += jsonCommentToHTML(responseObj)
 }
 
 //Html post info
@@ -123,7 +190,7 @@ function addPost(post){
             />
           </svg>
         </button>
-        <button class="post__button">
+        <button class="post__button" onclick="openComments(${post.id})">
           <svg
             width="24"
             height="24"
@@ -203,6 +270,38 @@ function addPost(post){
       </div>
     </div>
   </article>`
+}
+
+function filterPostCommentObj(obj){
+  if(obj.author == null){
+    obj.author = {id: "assets/default-user.png", name: undefined}
+  }
+}
+
+function jsonCommentToHTML(obj){
+  filterPostCommentObj(obj)
+  return `<div class="row">
+  <div class="col">
+    <div class="d-flex flex-start">
+      <img class="rounded-circle shadow-1-strong profileCommentImage"
+        src="${obj.author.id}" alt="avatar" width="65"
+        height="65" />
+      <div class="flex-grow-1 flex-shrink-1">
+        <div>
+          <div class="d-flex justify-content-between align-items-center">
+            <p class="mb-1">
+              ${obj.author.name} <span class="small">- 2 hours ago</span>
+            </p>
+          </div>
+          <p class="small mb-0">
+            ${obj.comment}
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<br>`
 }
 
 chargeMorePost()

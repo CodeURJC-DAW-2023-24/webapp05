@@ -1,5 +1,6 @@
 package es.codeurjc.Instapick.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 
 import java.sql.Blob;
@@ -9,12 +10,15 @@ import java.util.Map;
 @Entity
 public class User {
     @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
     private String userName; //nombre de cuenta del usuario
     private String password;
     private String name; //nombre real de usuario
     private String email;
     private Rol rol;
+    @Lob
+    @JsonIgnore
     private Blob avatar;
 
 
@@ -30,11 +34,18 @@ public class User {
     }
 
     @ManyToMany
+    @JsonIgnore
     private List<User> friends;
     @OneToMany(cascade = CascadeType.ALL)
+    @JsonIgnore
     private List<Post> posts;
     @ManyToMany
+    @JsonIgnore
     private List<Chat> chats;
+
+    public void addFriend(User friend){
+        this.friends.add(friend);
+    }
 
     public long getId() {
         return id;
