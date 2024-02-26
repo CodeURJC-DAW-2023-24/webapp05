@@ -22,11 +22,14 @@ function showHildeAnimation(){
 function changeColor(){
     let logo = document.getElementById("logo") 
     let htmlMain = document.getElementById("htmlMain")
+    let changebutton = document.getElementById("newpost")
     if (htmlMain.classList == "lightTheme"){
         htmlMain.classList = "darkTheme"
         logo.src = "assets/logo-white.png"
+        changebutton.src = "assets/plus_blk-removebg-preview.jpg"
     }else{
         logo.src = "assets/logo-negro.png"
+        changebutton.src = "assets/plus_bk_removed.png"
         htmlMain.classList = "lightTheme"
     }
 }
