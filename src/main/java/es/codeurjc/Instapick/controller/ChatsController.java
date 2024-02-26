@@ -7,8 +7,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 @Controller
 public class ChatsController {
     @GetMapping("/chats")
-    public String getMethodName(@RequestParam String param) {
-        return new String();
+    public String getMethodName() {
+        return "chat";
     }
 
 }
