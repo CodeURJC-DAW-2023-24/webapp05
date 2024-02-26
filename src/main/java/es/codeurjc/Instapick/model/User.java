@@ -13,8 +13,9 @@ public class User {
     private String userName; //nombre de cuenta del usuario
     private String password;
     private String name; //nombre real de usuario
+    private String description;
     private String email;
-    private Rol rol;
+    private String rol;
     private Blob avatar;
 
 
@@ -67,7 +68,7 @@ public class User {
         this.email=email;
     }
 
-    public Rol getRol(){
+    public String getRol(){
         return rol;
     }
 
@@ -90,8 +91,12 @@ public class User {
         return chats;
     }
 
-    public void setRol(Rol rol) {
+    public void setRol(String rol) {
         this.rol = rol;
+    }
+
+    public String getDescription() {
+        return description;
     }
 
 
