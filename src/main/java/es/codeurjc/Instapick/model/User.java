@@ -15,6 +15,7 @@ public class User {
     private String userName; //nombre de cuenta del usuario
     private String password;
     private String name; //nombre real de usuario
+    private String description;
     private String email;
     private Rol rol;
     @Lob
@@ -103,6 +104,10 @@ public class User {
 
     public void setRol(Rol rol) {
         this.rol = rol;
+    }
+
+    public String getDescription() {
+        return description;
     }
 
 
