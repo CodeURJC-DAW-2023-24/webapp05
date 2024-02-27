@@ -1,4 +1,4 @@
-package es.codeurjc.security;
+package es.codeurjc.Instapick.security;
 
 import org.springframework.security.web.csrf.CsrfToken;
 import org.springframework.web.servlet.HandlerInterceptor;

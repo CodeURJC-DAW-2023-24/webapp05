@@ -36,7 +36,7 @@ public class UserService {
         users.deleteById(id);
     }
 
-    public User findByUserName(String userName) {
+    public Optional<User> findByUserName(String userName) {
         return users.findByUserName(userName);
     }
 }
