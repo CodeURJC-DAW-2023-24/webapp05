@@ -37,9 +37,10 @@ public class Post {
     public Post() {
     }
 
-    public Post(String description, Blob multimedia) {
+    public Post(String description, Blob multimedia, User author) {
         this.description = description;
         this.multimedia = multimedia;
+        this.author = author;
     }
 
     public long getId() {

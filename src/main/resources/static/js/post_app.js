@@ -120,23 +120,28 @@ async function sendComment(){
   commentsZone.innerHTML += jsonCommentToHTML(responseObj)
 }
 
+async function chargeSugestons(){
+  let response = await fetch(`/`)
+}
+
 //Html post info
 function addPost(post){
+    filterPostCommentObj(post)
     return `<article class="post" id="post${post.id}">
     <div class="post__header">
       <div class="post__profile">
         <a
-          href="https://github.com/leocosta1"
+          href="/profile/${post.author.id}"
           target="_blank"
           class="post__avatar"
         >
-          <img src="assets/default-user.png" alt="User Picture" />
+          <img src="/imageUser/${post.author.id}" alt="User Picture" />
         </a>
         <a
-          href="https://github.com/leocosta1"
+          href="/profile/${post.author.id}"
           target="_blank"
           class="post__user"
-          >leocosta1</a
+          >${post.author.name}</a
         >
       </div>
 

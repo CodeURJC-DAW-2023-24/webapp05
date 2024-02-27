@@ -1,7 +1,11 @@
 package es.codeurjc.Instapick.controller;
 
 import es.codeurjc.Instapick.model.Post;
+import es.codeurjc.Instapick.model.User;
 import es.codeurjc.Instapick.service.PostService;
+import es.codeurjc.Instapick.service.UserService;
+import jakarta.servlet.http.HttpServletRequest;
+
 import org.hibernate.engine.jdbc.BlobProxy;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -23,6 +27,8 @@ public class NewPostController {
 
     @Autowired
     private PostService posts;
+    @Autowired
+    private UserService users;
 
     @GetMapping("/newPost")
     public String getNewPost() {
@@ -32,9 +38,12 @@ public class NewPostController {
     private static final Path IMAGES_FOLDER = Paths.get(System.getProperty("user.dir"), "images");
 
     @PostMapping("/addNewPost")
-    public String addNewPost(@RequestParam String description, @RequestParam MultipartFile image, Model model)
+    public String addNewPost(@RequestParam String description, @RequestParam MultipartFile image, Model model,
+            HttpServletRequest request)
             throws IOException {
-        Post newPost = new Post(description, BlobProxy.generateProxy(image.getInputStream(), image.getSize()));
+        Optional<User> author = users.findByUserName(request.getUserPrincipal().getName());
+        Post newPost = new Post(description, BlobProxy.generateProxy(image.getInputStream(), image.getSize()),
+                author.get());
         posts.save(newPost);
         String redirect = "redirect:/showSpecificPost/".concat(Long.toString(newPost.getId()));
         return redirect;

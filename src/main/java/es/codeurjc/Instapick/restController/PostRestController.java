@@ -6,6 +6,7 @@ import es.codeurjc.Instapick.model.User;
 import es.codeurjc.Instapick.service.PostCommentService;
 import es.codeurjc.Instapick.service.PostService;
 import es.codeurjc.Instapick.service.UserService;
+import jakarta.servlet.http.HttpServletRequest;
 
 import org.hibernate.mapping.List;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -65,10 +66,11 @@ public class PostRestController {
     }
 
     @PutMapping("/sendCommenToPost")
-    public PostComment putCommentToPost(@RequestParam long id, @RequestParam String text) {
+    public PostComment putCommentToPost(@RequestParam long id, @RequestParam String text, HttpServletRequest request) {
+        Optional<User> author = users.findByUserName(request.getUserPrincipal().getName());
         Optional<Post> postById = posts.findById(id);
         if (postById.isPresent()) {
-            PostComment newPostComment = new PostComment(postById.get(), null, text);
+            PostComment newPostComment = new PostComment(postById.get(), author.get(), text);
             postComments.save(newPostComment);
             return newPostComment;
         } else {

@@ -9,7 +9,6 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 
-
 @Configuration
 @EnableWebSecurity
 public class SecurityConfig {
@@ -35,28 +34,27 @@ public class SecurityConfig {
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
 
-        //Autenticator
+        // Autenticator
         http.authenticationProvider(authenticationProvider());
 
         http
                 .authorizeHttpRequests(authorize -> authorize
                         // PUBLIC PAGES
-                        .requestMatchers("/","/signup","/posts", "/getMorePosts", "/imagePost/*", "/addUser").permitAll()
-                        .requestMatchers("/css/**", "/js/**", "/img/**","/assets/**").permitAll()
+                        .requestMatchers("/", "/signup", "/posts", "/getMorePosts", "/imagePost/*", "/addUser")
+                        .permitAll()
+                        .requestMatchers("/css/**", "/js/**", "/img/**", "/assets/**").permitAll()
                         // PRIVATE PAGES
-                        .anyRequest().authenticated()
-                )
+                        .requestMatchers("/newPost", "/addNewPost").hasAnyRole("normal", "admin")
+                        .anyRequest().authenticated())
                 .formLogin(formLogin -> formLogin
                         .loginPage("/login")
                         .failureUrl("/login")
                         .defaultSuccessUrl("/posts")
-                        .permitAll()
-                )
+                        .permitAll())
                 .logout(logout -> logout
                         .logoutUrl("/logout")
                         .logoutSuccessUrl("/")
-                        .permitAll()
-                );
+                        .permitAll());
 
         // Disable CSRF at the moment
         http.csrf(csrf -> csrf.disable());
