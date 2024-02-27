@@ -71,15 +71,17 @@ let observer = new IntersectionObserver((input, observator) => {
 
 //Ajax function to charge more posts
 async function chargeMorePost(){
-    let response = await fetch(`/getMorePosts?from=${from}&to=${to}`)
-    let responseObj = await response.json()
-    let postZone = document.getElementById("postZone")
-    responseObj.content.forEach(element => {
-        postZone.innerHTML += addPost(element)
-    });
-    let postInScreen = document.querySelectorAll('.post')
-    observer.observe(postInScreen[postInScreen.length - 1]) 
-    showHildeAnimation()
+    if(!window.location.href.includes("showSpecificPost")){
+      let response = await fetch(`/getMorePosts?from=${from}&to=${to}`)
+      let responseObj = await response.json()
+      let postZone = document.getElementById("postZone")
+      responseObj.content.forEach(element => {
+          postZone.innerHTML += addPost(element)
+      });
+      let postInScreen = document.querySelectorAll('.post')
+      observer.observe(postInScreen[postInScreen.length - 1]) 
+      showHildeAnimation()
+    }
 }
 
 function showHideCommentSection(){
