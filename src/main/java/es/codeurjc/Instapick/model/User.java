@@ -79,7 +79,7 @@ public class User {
         this.email=email;
     }
 
-    public String getRol(){
+    public Rol getRol(){
         return rol;
     }
 
@@ -102,7 +102,7 @@ public class User {
         return chats;
     }
 
-    public void setRol(String rol) {
+    public void setRol(Rol rol) {
         this.rol = rol;
     }
 
