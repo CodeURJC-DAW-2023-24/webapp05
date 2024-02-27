@@ -27,7 +27,7 @@ public class SignupController {
         User user = new User(username, password, email, name);
         user.setRol(Rol.normal);
 
-        users.save(user);
+        users.addNewUser(user);
 
         return "redirect:/login";
     }

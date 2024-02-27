@@ -35,19 +35,20 @@ public class SecurityConfig {
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
 
+        //Autenticator
         http.authenticationProvider(authenticationProvider());
 
         http
                 .authorizeHttpRequests(authorize -> authorize
                         // PUBLIC PAGES
-                        .requestMatchers("/").permitAll()
-                        .requestMatchers("/css/**", "/js/**", "/img/**").permitAll()
+                        .requestMatchers("/","/signup","/posts", "/getMorePosts", "/imagePost/*", "/addUser").permitAll()
+                        .requestMatchers("/css/**", "/js/**", "/img/**","/assets/**").permitAll()
                         // PRIVATE PAGES
                         .anyRequest().authenticated()
                 )
                 .formLogin(formLogin -> formLogin
                         .loginPage("/login")
-                        .failureUrl("/loginerror")
+                        .failureUrl("/login")
                         .defaultSuccessUrl("/posts")
                         .permitAll()
                 )

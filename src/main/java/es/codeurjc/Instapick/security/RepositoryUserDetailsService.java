@@ -25,7 +25,8 @@ public class RepositoryUserDetailsService implements UserDetailsService {
     public UserDetails loadUserByUsername(String username) 
     throws UsernameNotFoundException {
         User user = userRepository.findByUserName(username)
-        .orElseThrow(() -> new UsernameNotFoundException("User not found"));
+            .orElseThrow(() -> new UsernameNotFoundException("User not found"));
+
         List<GrantedAuthority> roles = new ArrayList();
         roles.add((new SimpleGrantedAuthority("ROLE_" + user.getRol())));
         

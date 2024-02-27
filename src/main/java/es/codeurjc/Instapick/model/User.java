@@ -110,6 +110,7 @@ public class User {
         return description;
     }
 
-
-
+    public void setPassword(String password) {
+        this.password = password;
+    }
 }

@@ -3,6 +3,7 @@ package es.codeurjc.Instapick.service;
 import es.codeurjc.Instapick.model.User;
 import es.codeurjc.Instapick.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -13,6 +14,8 @@ public class UserService {
 
     @Autowired
     private UserRepository users;
+    @Autowired
+    private PasswordEncoder passwordEncoder;
 
     public void save(User user) {
         users.save(user);
@@ -38,5 +41,11 @@ public class UserService {
 
     public Optional<User> findByUserName(String userName) {
         return users.findByUserName(userName);
+    }
+
+    public void addNewUser(User user) {
+        String encodePassword = passwordEncoder.encode(user.getPassword());
+        user.setPassword(encodePassword);
+        users.save(user);
     }
 }
