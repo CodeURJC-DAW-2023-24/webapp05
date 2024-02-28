@@ -53,4 +53,8 @@ public class UserService {
         return users.getFriendsOfUser(user);
     }
 
+    public List<User> getSearchedUsers(String name){
+        return users.getSearchedUsers(name);
+    }
+
 }

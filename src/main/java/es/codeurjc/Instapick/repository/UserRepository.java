@@ -16,4 +16,7 @@ public interface UserRepository extends JpaRepository<User, Long> {
 
     @Query("select distinct a from User b join b.friends a where b = ?1")
     public List<User> getFriendsOfUser(User user);
+
+    @Query("select a from User a where a.name like %?1%")
+    public List<User> getSearchedUsers(String name);
 }

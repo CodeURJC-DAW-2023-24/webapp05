@@ -40,7 +40,7 @@ public class SecurityConfig {
         http
                 .authorizeHttpRequests(authorize -> authorize
                         // PUBLIC PAGES
-                        .requestMatchers( "/signup", "/posts", "/getMorePosts", "/imagePost/*", "/addUser")
+                        .requestMatchers( "/signup", "/posts", "/getMorePosts", "/imagePost/*", "/addUser", "/getUserForSearch")
                         .permitAll()
                         .requestMatchers("/css/**", "/js/**", "/img/**", "/assets/**").permitAll()
                         // PRIVATE PAGES
