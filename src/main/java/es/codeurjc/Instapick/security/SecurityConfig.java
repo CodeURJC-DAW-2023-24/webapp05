@@ -40,9 +40,9 @@ public class SecurityConfig {
         http
                 .authorizeHttpRequests(authorize -> authorize
                         // PUBLIC PAGES
-                        .requestMatchers( "/signup", "/posts", "/getMorePosts", "/imagePost/*", "/addUser", "/getUserForSearch")
-                        .permitAll()
-                        .requestMatchers("/css/**", "/js/**", "/img/**", "/assets/**").permitAll()
+                        .requestMatchers("/").permitAll()
+                        .requestMatchers("/signup", "/addUser").permitAll()
+                        .requestMatchers("/css/**", "/js/**", "/img/**").permitAll()
                         // PRIVATE PAGES
                         .requestMatchers("/newPost", "/addNewPost").hasAnyRole("normal", "admin")
                         .anyRequest().authenticated())

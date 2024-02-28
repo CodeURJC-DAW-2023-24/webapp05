@@ -19,7 +19,7 @@ public class LoginController {
     @Autowired
     private UserService users;
 
-    @RequestMapping("/login")
+    @GetMapping("/login")
     public String getSignup(Model model) {
 
         model.addAttribute("incorrect", false);
@@ -27,31 +27,11 @@ public class LoginController {
         return "log_in";
     }
 
-    // @PostMapping("/login")
-    // public String loginUser(@RequestParam String username,
-    //  @RequestParam String password, HttpSession session, Model model) {
-        
-    //     User user = users.findByUserName(username);
-    //     if (user == null || !password.equals(user.getPassword())) {
-    //         model.addAttribute("incorrect", true);
-    //         return "log_in";
-    //     }else if (password.equals(user.getPassword())){
-            
-    //         session.setAttribute("userName", user.getUserName());
-    //         session.setAttribute("name", user.getName());
-    //         session.setAttribute("password", user.getPassword());
-    //         session.setAttribute("email", user.getEmail());
-    //         session.setAttribute("rol", user.getRol());
-    //         session.setAttribute("avatar", user.getAvatar());
-    //         session.setAttribute("id", user.getId());
+    @PostMapping("/login")
+    public String postLogin(Model model) {
 
-    //         return "redirect:/posts";
 
-    //     }
-
-    //     model.addAttribute("incorrect", true);
-
-    //     return "log_in";
-    // }
+        return "post";
+    }
     
 }

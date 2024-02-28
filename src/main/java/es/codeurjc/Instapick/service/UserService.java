@@ -44,8 +44,6 @@ public class UserService {
     }
 
     public void addNewUser(User user) {
-        String encodePassword = passwordEncoder.encode(user.getPassword());
-        user.setPassword(encodePassword);
         users.save(user);
     }
 

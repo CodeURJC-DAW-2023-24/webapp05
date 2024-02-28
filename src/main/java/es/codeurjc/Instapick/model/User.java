@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 
 import java.sql.Blob;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
@@ -13,7 +14,7 @@ public class User {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
     private String userName; //nombre de cuenta del usuario
-    private String password;
+    private String encodedPassword;
     private String name; //nombre real de usuario
     private String description;
     private String email;
@@ -29,16 +30,17 @@ public class User {
 
     public User(String userName, String password, String email, String name) {
         this.userName = userName;
-        this.password = password;
+        this.encodedPassword = password;
         this.name = name;
         this.email = email;
+        this.description = "";
+        this.posts = new ArrayList<>();
     }
 
     @ManyToMany
     @JsonIgnore
     private List<User> friends;
     @OneToMany(cascade = CascadeType.ALL)
-    @JsonIgnore
     private List<Post> posts;
     @ManyToMany
     @JsonIgnore
@@ -90,8 +92,8 @@ public class User {
     public List<Post> getPosts(){
         return posts;
     }
-    public String getPassword() {
-        return password;
+    public String getEncodedPassword() {
+        return encodedPassword;
     }
 
     public Blob getAvatar() {
@@ -111,6 +113,10 @@ public class User {
     }
 
     public void setPassword(String password) {
-        this.password = password;
+        this.encodedPassword = password;
+    }
+
+    public void savePost(Post newPost) {
+        this.posts.add(newPost);
     }
 }
