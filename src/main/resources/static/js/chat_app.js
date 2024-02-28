@@ -1,5 +1,6 @@
 let btnColor = document.getElementById("colorBtn")
-
+let me = document.getElementById("meXd").textContent
+let nowChat = ""
 
 function changeColor(){
     let logo = document.getElementById("logo") 
@@ -22,3 +23,46 @@ function changeColor(){
     }
 }
 
+async function loadMesaggesOfChat(userName){
+    let response = await fetch(`/getChat/${userName}`)
+    let responseObj = await response.json()
+    if(responseObj != null){
+        let txt = loadChatToHTML(responseObj)
+        document.getElementById("chattingZone").innerHTML = txt
+    }
+    nowChat = userName
+}
+
+function loadChatToHTML(chatMessages){
+    let txt = ""
+    chatMessages.forEach(element => {
+        if(element.author.name === me){
+            txt += ChatMessageToMyHTML(element.comment)
+        }else{
+            txt += ChatMessageToFrienHTML(element.comment)
+        }
+    });
+    return txt
+}
+
+async function sendMessage(){
+    let txtInput = document.getElementById("chatMessageInput").value 
+    let response = await fetch(`/sendChatMessage/${nowChat}?txt=${txtInput}`, {method:"PUT"})
+    let responseObj = await response.json()
+    if(responseObj == false){
+        alert("Error: Message could not be sent")
+    }
+    document.getElementById("chattingZone").innerHTML += ChatMessageToMyHTML(txtInput)
+}
+
+function ChatMessageToFrienHTML(txtInput){
+    return `<div class="my_message">
+    <p class="p_message">${txtInput}</p>
+  </div>`
+}
+
+function ChatMessageToMyHTML(txtInput){
+    return `<div class="response_message">
+    <p class="p_message">${txtInput}</p>
+  </div>`
+}

@@ -48,4 +48,9 @@ public class UserService {
         user.setPassword(encodePassword);
         users.save(user);
     }
+
+    public List<User> getFriendsOfUser(User user){
+        return users.getFriendsOfUser(user);
+    }
+
 }

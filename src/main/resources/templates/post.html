@@ -677,56 +677,19 @@
               <button>See All</button>
             </div>
             <div class="side-menu__suggestions-content">
+              
+              {{#recommendedUsers}}
               <div class="side-menu__suggestion">
                 <a href="#" class="side-menu__suggestion-avatar">
                   <img src="/assets/default-user.png" alt="User Picture" />
                 </a>
                 <div class="side-menu__suggestion-info">
-                  <a href="#">usernick16</a>
-                  <span>Followed by user1, user2 and 9 others</span>
+                  <a href="#">{{name}}</a>
+                  <span>Followed by x and 6 others</span>
                 </div>
-                <button class="side-menu__suggestion-button">Follow</button>
+                <button class="side-menu__suggestion-button" onclick="addFriend('{{name}}')">Follow</button>
               </div>
-              <div class="side-menu__suggestion">
-                <a href="#" class="side-menu__suggestion-avatar">
-                  <img src="/assets/default-user.png" alt="User Picture" />
-                </a>
-                <div class="side-menu__suggestion-info">
-                  <a href="#">usernick17</a>
-                  <span>Followed by user1, user2 and 3 others</span>
-                </div>
-                <button class="side-menu__suggestion-button">Follow</button>
-              </div>
-              <div class="side-menu__suggestion">
-                <a href="#" class="side-menu__suggestion-avatar">
-                  <img src="/assets/default-user.png" alt="User Picture" />
-                </a>
-                <div class="side-menu__suggestion-info">
-                  <a href="#">usernick18</a>
-                  <span>Followed by user1 and 9 others</span>
-                </div>
-                <button class="side-menu__suggestion-button">Follow</button>
-              </div>
-              <div class="side-menu__suggestion">
-                <a href="#" class="side-menu__suggestion-avatar">
-                  <img src="/assets/default-user.png" alt="User Picture" />
-                </a>
-                <div class="side-menu__suggestion-info">
-                  <a href="#">usernick19</a>
-                  <span>Followed by user1 and 3 others</span>
-                </div>
-                <button class="side-menu__suggestion-button">Follow</button>
-              </div>
-              <div class="side-menu__suggestion">
-                <a href="#" class="side-menu__suggestion-avatar">
-                  <img src="/assets/default-user.png" alt="User Picture" />
-                </a>
-                <div class="side-menu__suggestion-info">
-                  <a href="#">usernick20</a>
-                  <span>Followed by user1 and 6 others</span>
-                </div>
-                <button class="side-menu__suggestion-button">Follow</button>
-              </div>
+              {{/recommendedUsers}}
             </div>
           </div>
 

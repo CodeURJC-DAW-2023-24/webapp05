@@ -23,7 +23,7 @@
       <div class="message_container border-color">
         <div class="persons color-chat">
           <div class="account_name">
-            <p>User</p>
+            <p id="meXd">{{userName}}</p>
             <p class="search">
               <img src="./img/edit.png" id="edit">
             </p>
@@ -33,92 +33,20 @@
               <p>Messages</p>
               <p><a href="#">3 requests</a></p>
             </div>
-            <div class="cart">
-              <div>
-                <div class="img">
-                  <img src="./assets/logo-negro.png" alt="">
-                </div>
-                <div class="info">
-                  <p class="name">User</p>
-                </div>
-              </div>
-            </div>
-            <div class="cart">
-              <div>
-                <div class="img">
-                  <img src="./assets/logo-negro.png" alt="">
-                </div>
-                <div class="info">
-                  <p class="name">User</p>
-                </div>
-              </div>
 
-            </div>
+            {{#chats}}
             <div class="cart">
-              <div>
+              <div onclick="loadMesaggesOfChat('{{name}}')">
                 <div class="img">
-                  <img src="./assets/logo-negro.png" alt="">
+                  <img src="/" alt="imageUser/1">
                 </div>
                 <div class="info">
-                  <p class="name">User</p>
-                </div>
-              </div>
-
-            </div>
-            <div class="cart">
-              <div>
-                <div class="img">
-                  <img src="./assets/logo-negro.png" alt="">
-                </div>
-                <div class="info">
-                  <p class="name">User</p>
-                </div>
-              </div>
-
-            </div>
-            <div class="cart">
-              <div>
-                <div class="img">
-                  <img src="./assets/logo-negro.png" alt="">
-                </div>
-                <div class="info">
-                  <p class="name">User</p>
+                  <p class="name">{{name}}</p>
                 </div>
               </div>
             </div>
-            <div class="cart">
-              <div>
-                <div class="img">
-                  <img src="./assets/logo-negro.png" alt="">
-                </div>
-                <div class="info">
-                  <p class="name">User</p>
-                </div>
-              </div>
-
-            </div>
-            <div class="cart">
-              <div>
-                <div class="img">
-                  <img src="./assets/logo-negro.png" alt="">
-                </div>
-                <div class="info">
-                  <p class="name">User</p>
-                </div>
-              </div>
-
-            </div>
-            <div class="cart">
-              <div>
-                <div class="img">
-                  <img src="./assets/logo-negro.png" alt="">
-                </div>
-                <div class="info">
-                  <p class="name">User</p>
-                </div>
-              </div>
-
-            </div>
+            {{/chats}}
+            
           </div>
         </div>
         <div class="message message-section">
@@ -129,7 +57,7 @@
                   <img src="./assets/logo-negro.png" alt="">
                 </div>
                 <div class="info">
-                  <p class="name name-chat">Supegrdghtdhdthgdthdth</p>
+                  <p class="name name-chat" id="selectedChat">Supegrdghtdhdthgdthdth</p>
                 </div>
               </div>
             </div>
@@ -142,16 +70,12 @@
               </a>
             </div>
           </div>
-          <div class="content">
-            <div class="my_message">
-              <p class="p_message">hello how are you?</p>
-            </div>
-            <div class="response_message">
-              <p class="p_message">hi! i'm fine and you?</p>
-            </div>
+          <div class="content" id="chattingZone">
+            
             <div class="my_message">
               <p class="p_message">I'm good </p>
             </div>
+
             <div class="response_message">
               <p class="p_message">I'll come tomorrow</p>
             </div>
@@ -159,8 +83,8 @@
           </div>
           <form>
             <div class="input-group mb-3">
-              <input type="text" class="form-control" placeholder="Some text" aria-label="Recipient's username" aria-describedby="basic-addon2">
-              <span class="input-group-text" id="basic-addon2">Send</span>
+              <input type="text" class="form-control" id="chatMessageInput" placeholder="Some text" aria-label="Recipient's username" aria-describedby="basic-addon2">
+              <span class="input-group-text" id="basic-addon2" onclick="sendMessage()">Send</span>
             </div>
           </form>
 

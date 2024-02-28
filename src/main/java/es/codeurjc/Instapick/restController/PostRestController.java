@@ -38,13 +38,14 @@ public class PostRestController {
         return postsToCharge;
     }
 
-    /*
-     * @GetMapping("/getCommentsOfPost")
-     * public java.util.List<PostComment> getMethodName(@RequestParam long id) {
-     * Optional<Post> postToGetComments = posts.findById(id);
-     * return postToGetComments.get().getComments();
-     * }
-     */
+
+      @GetMapping("/get_CommentsOfPost")
+      public java.util.List<PostComment> getMethodName(@RequestParam long id) {
+          Optional<Post> postToGetComments = posts.findById(id);
+          //return postToGetComments.get().getComments();
+          return postComments.findByFatherPost(postToGetComments.get());
+        }
+
 
     @PutMapping("likeToPost/{id}")
     public boolean likePost(@PathVariable long id) {

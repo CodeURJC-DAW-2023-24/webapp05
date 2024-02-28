@@ -106,7 +106,7 @@ async function openComments(id){
     let comments = document.getElementById("commentsZone")
     comments.innerHTML = ""
     postIdForComments = id
-    let response = await fetch(`/getCommentsOfPost?id=${id}`)
+    let response = await fetch(`/get_CommentsOfPost?id=${id}`)
     let responseObj = await response.json()
     responseObj.forEach(element => {
       comments.innerHTML += jsonCommentToHTML(element)
@@ -122,8 +122,12 @@ async function sendComment(){
   commentsZone.innerHTML += jsonCommentToHTML(responseObj)
 }
 
-async function chargeSugestons(){
-  let response = await fetch(`/`)
+async function addFriend(userName){
+  let response = fetch(`/addFriend/${userName}`, {method:"PUT"})
+  let responseObj = await response.json()
+  if(responseObj == false){
+    alert(`Error: Could not add ${userName} to friends`)
+  }
 }
 
 //Html post info

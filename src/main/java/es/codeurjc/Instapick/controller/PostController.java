@@ -1,5 +1,6 @@
 package es.codeurjc.Instapick.controller;
 
+import es.codeurjc.Instapick.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
@@ -25,11 +26,14 @@ public class PostController {
 
     @Autowired
     private PostService posts;
+    @Autowired
+    private UserService users;
 
     @GetMapping("/posts")
     public String getMethodName(Model model) {
         // List<Post> postsToShow = posts.findAll();
         // model.addAttribute("postToShow", postsToShow);
+        model.addAttribute("recommendedUsers", users.findAll());
         return "post";
     }
 
