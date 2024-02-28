@@ -1,11 +1,13 @@
 package es.codeurjc.Instapick.repository;
 
 import es.codeurjc.Instapick.model.Post;
+import es.codeurjc.Instapick.model.User;
 
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -21,4 +23,6 @@ public interface PostRepository extends JpaRepository<Post, Long> {
         Page<Post> findByAuthor(String author, Pageable page); // Find posts by author name
         //Page<Post> findFriendsFirst(String author, Pageable page); // Find friends posts
         Page<Post> findByOrderByLikesDesc(Pageable page); // Find posts by most liked first
+
+        List<Post> findByAuthor(User user);
 }

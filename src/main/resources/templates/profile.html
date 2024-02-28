@@ -21,21 +21,21 @@
   <div class="perfil-usuario-header">
     <div class="perfil-usuario-portada">
       <div class="perfil-usuario-avatar">
-        <!-- <img src="imagen" alt="img-avatar"> -->
+        <img src="/imageUser/${post.author.id}" alt="img-avatar">
       </div>
     </div>
   </div>
   <div class="perfil-usuario-body">
     <div class="perfil-usuario-bio">
-      <h3 class="titulo">userName</h3>
-      <!-- <p class="texto">description</p> -->
-      <p class="titulo">name</p>
+      <h3 class="titulo" id="userName">{{userName}}</h3>
+      <p class="texto">{{description}}</p>
+      <p class="titulo">{{name}}</p>
     </div>
     <div class="perfil-usuario-footer">
 
-      <div class="container">
+      <div class="container" id="profilePost">
         <!-- <button><a href="/pdf" download="">Descargar</a></button> -->
-        <div class="row">
+        <!-- <div class="row">
           <img class="col-md-1 post" src="assets/logo.jpg" />
           <img class="col-md-1 post" src="assets/logo.jpg" />
           <img class="col-md-1 post" src="assets/logo.jpg" />
@@ -52,7 +52,8 @@
           <img class="col-md-1 post" src="assets/logo.jpg" />
           <img class="col-md-1 post" src="assets/logo.jpg" />
           <img class="col-md-1 post" src="assets/logo.jpg" />
-        </div>
+        </div> -->
+
       </div>
 
 
@@ -64,6 +65,6 @@
 
 <link rel="stylesheet" type="text/css" href="css/post.css" />
 <link rel="stylesheet" type="text/css" href="css/profile.css" />
-<script src="js/post_app.js" defer></script>
+<script src="js/profilePost.js" defer></script>
 
 </html>

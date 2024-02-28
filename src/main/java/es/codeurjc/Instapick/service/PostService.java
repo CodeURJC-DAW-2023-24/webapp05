@@ -1,6 +1,7 @@
 package es.codeurjc.Instapick.service;
 
 import es.codeurjc.Instapick.model.Post;
+import es.codeurjc.Instapick.model.User;
 import es.codeurjc.Instapick.repository.PostRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -45,5 +46,9 @@ public class PostService {
 
     public Page<Post> findAll(PageRequest of) {
         return posts.findAll(of);
+    }
+
+    public List<Post> findByAuthor(User user) {
+        return posts.findByAuthor(user);
     }
 }

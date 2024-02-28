@@ -4,8 +4,11 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.security.Principal;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
@@ -17,6 +20,8 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import es.codeurjc.Instapick.model.Post;
+
 // import com.itextpdf.kernel.pdf.PdfDocument;
 // import com.itextpdf.kernel.pdf.PdfWriter;
 // import com.itextpdf.layout.Document;
@@ -27,14 +32,20 @@ import es.codeurjc.Instapick.service.UserService;
 
 @Controller
 public class ProfileController {
-    @GetMapping("/profile")
+
+    @Autowired
+    UserService users;
+
+    @GetMapping("/yourProfile")
     public String getMethodName(Model model, Principal principal) {
-        UserService users =new UserService();
         User user = users.findByUserName(principal.getName())
         .orElseThrow(() -> new UsernameNotFoundException("User not found"));
-        model.addAttribute("username",user.getUserName());
+        model.addAttribute("userName",user.getUserName());
         model.addAttribute("name",user.getName());
-        model.addAttribute("email", user.getEmail());
+        model.addAttribute("description",user.getDescription());
+
+
+        // model.addAttribute("email", user.getEmail());
         return "profile";
     }
     

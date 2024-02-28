@@ -12,15 +12,11 @@ import org.hibernate.mapping.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.web.bind.annotation.*;
 
 import javax.swing.text.html.Option;
 import java.util.Optional;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.PathVariable;
 
 @RestController
 public class PostRestController {
@@ -39,12 +35,23 @@ public class PostRestController {
     }
 
 
-      @GetMapping("/get_CommentsOfPost")
-      public java.util.List<PostComment> getMethodName(@RequestParam long id) {
-          Optional<Post> postToGetComments = posts.findById(id);
-          //return postToGetComments.get().getComments();
-          return postComments.findByFatherPost(postToGetComments.get());
-        }
+    @GetMapping("/get_CommentsOfPost")
+    public java.util.List<PostComment> getMethodName(@RequestParam long id) {
+        Optional<Post> postToGetComments = posts.findById(id);
+        //return postToGetComments.get().getComments();
+        return postComments.findByFatherPost(postToGetComments.get());
+    }
+
+    @GetMapping("/getProfilePost")
+    public java.util.List<Post> getMethodName(@RequestParam String name) {
+        User user = users.findByUserName(name)
+        .orElseThrow(() -> new UsernameNotFoundException("User not found"));
+        java.util.List<Post> allPost = posts.findByAuthor(user);
+
+
+        return allPost;
+    }
+    
 
 
     @PutMapping("likeToPost/{id}")
@@ -78,4 +85,5 @@ public class PostRestController {
             return null;
         }
     }
+    
 }
