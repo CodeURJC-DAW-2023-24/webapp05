@@ -26,7 +26,8 @@ public class Post {
 
     @ManyToOne
     private User author;
-    @OneToMany
+
+    @OneToMany(orphanRemoval = true, cascade = CascadeType.ALL, mappedBy = "fatherPost")
     @JsonIgnore
     private List<PostComment> comments;
 

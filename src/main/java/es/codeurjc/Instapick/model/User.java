@@ -14,9 +14,10 @@ public class User {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
     private String userName; //nombre de cuenta del usuario
+    @JsonIgnore
     private String encodedPassword;
     private String name; //nombre real de usuario
-    private String description;
+    private String description = "";
     private String email;
     private Rol rol;
     @Lob
@@ -40,7 +41,8 @@ public class User {
     @ManyToMany
     @JsonIgnore
     private List<User> friends;
-    @OneToMany(cascade = CascadeType.ALL)
+    @OneToMany(orphanRemoval = true ,cascade = CascadeType.ALL, mappedBy = "author")
+    @JsonIgnore
     private List<Post> posts;
     @ManyToMany
     @JsonIgnore
