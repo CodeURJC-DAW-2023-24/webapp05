@@ -41,7 +41,7 @@ public class PostController {
             model.addAttribute("logged", false);
         }
         model.addAttribute("recommendedUsers", users.findAll());
-        System.out.println(users.findAll());
+        //System.out.println(users.findAll());
         return "post";
     }
 

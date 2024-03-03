@@ -46,6 +46,21 @@ public class SecurityConfig {
     }
 
     @Bean
+    public InMemoryUserDetailsManager userDetailsService() {
+        UserDetails user = User.builder()
+                .username("user")
+                .password(passwordEncoder().encode("pass"))
+                .roles("normal")
+                .build();
+        UserDetails admin = User.builder()
+                .username("admin")
+                .password(passwordEncoder().encode("adminpass"))
+                .roles("admin")
+                .build();
+        return new InMemoryUserDetailsManager(user, admin);
+    }
+
+    @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
 
         // Autenticator
@@ -57,8 +72,8 @@ public class SecurityConfig {
                         .requestMatchers("/").permitAll()
                         .requestMatchers("/signup", "/addUser", "/posts", "/getMorePosts", "/getNumberOfPosts",
                                 "/imagePost/*",
-                                "/getUserForSearch", "/profile", "/getProfilePost").permitAll()
-                        .requestMatchers("/css/**", "/js/**", "/img/**").permitAll()
+                                "/getUserForSearch", "/profile", "/getProfilePost", "/profile", "/yourProfile").permitAll()
+                        .requestMatchers("/css/**", "/js/**", "/img/**", "/assets/**").permitAll()
                         // PRIVATE PAGES
                         .requestMatchers("/newPost", "/addNewPost", "/addFriend", "/sendChatMessage/*").hasAnyRole("normal", "admin")
                         .requestMatchers("/admin").hasAnyRole("admin")

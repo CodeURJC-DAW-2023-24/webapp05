@@ -48,7 +48,12 @@ async function addFriend(userName){
 
 //Send like to post
 async function sendLike(id){
-    let response = await fetch(`likeToPost/${id}`, {method:"PUT"})
+    let token = document.getElementById("_csrf").value
+    let response = await fetch(`likeToPost/${id}`, {method:"PUT" , 
+    headers:{
+      "Content-Type": "application/json",
+      "X-CSRF-Token": token, 
+    }})
     let responseObj = await response.json()
     if(responseObj.arrivedLike == false){
         alert("Error al mandar el like")
@@ -141,14 +146,14 @@ function addPost(post){
     <div class="post__header">
       <div class="post__profile">
         <a
-          href="/profile/${post.author.id}"
+          href="/profile?name=${post.author.userName}"
           target="_blank"
           class="post__avatar"
         >
           <img src="/imageUser/${post.author.id}" alt="User Picture" />
         </a>
         <a
-          href="/profile/${post.author.id}"
+          href="/profile?name=${post.author.userName}"
           target="_blank"
           class="post__user"
           >${post.author.name}</a

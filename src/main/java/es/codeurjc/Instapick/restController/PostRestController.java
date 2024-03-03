@@ -61,6 +61,7 @@ public class PostRestController {
     public boolean likePost(@PathVariable long id) {
         Optional<Post> selectedPost = posts.findById(id);
         selectedPost.get().addLike();
+        posts.save(selectedPost.get());
         return true;
     }
 
