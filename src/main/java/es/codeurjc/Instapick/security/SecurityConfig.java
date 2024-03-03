@@ -5,16 +5,18 @@ import org.springframework.context.annotation.*;
 import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
+import org.springframework.security.core.userdetails.User;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.security.provisioning.InMemoryUserDetailsManager;
 import org.springframework.security.web.SecurityFilterChain;
 
 @Configuration
 @EnableWebSecurity
 public class SecurityConfig {
 
-    @Autowired
-    RepositoryUserDetailsService userDetailsService;
+
 
     @Bean
     public PasswordEncoder passwordEncoder() {
@@ -25,10 +27,25 @@ public class SecurityConfig {
     public DaoAuthenticationProvider authenticationProvider() {
         DaoAuthenticationProvider authProvider = new DaoAuthenticationProvider();
 
-        authProvider.setUserDetailsService(userDetailsService);
+        authProvider.setUserDetailsService(userDetailsService());
         authProvider.setPasswordEncoder(passwordEncoder());
 
         return authProvider;
+    }
+
+    @Bean
+    public InMemoryUserDetailsManager userDetailsService() {
+        UserDetails user = User.builder()
+                .username("user")
+                .password(passwordEncoder().encode("pass"))
+                .roles("normal")
+                .build();
+        UserDetails admin = User.builder()
+                .username("admin")
+                .password(passwordEncoder().encode("adminpass"))
+                .roles("admin")
+                .build();
+        return new InMemoryUserDetailsManager(user, admin);
     }
 
     @Bean
@@ -45,6 +62,7 @@ public class SecurityConfig {
                         .requestMatchers("/css/**", "/js/**", "/img/**").permitAll()
                         // PRIVATE PAGES
                         .requestMatchers("/newPost", "/addNewPost").hasAnyRole("normal", "admin")
+                        .requestMatchers("/admin", "/banUser").hasAnyRole("admin")
                         .anyRequest().authenticated())
                 .formLogin(formLogin -> formLogin
                         .loginPage("/login")
