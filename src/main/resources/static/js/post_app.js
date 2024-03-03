@@ -56,7 +56,6 @@ async function sendLike(id){
 let observer = new IntersectionObserver((input, observator) => {
     input.forEach(element => {
         if(element.isIntersecting){
-            //from = to
             to++
             showHildeAnimation()
             chargeMorePost()
@@ -73,7 +72,7 @@ async function chargeMorePost(){
       let response = await fetch(`/getNumberOfPosts`)
       let responseObj = await response.json()
       let n_Post = responseObj
-      response = await fetch(`/getMorePosts?from=${to}&to=${2}`)
+      response = await fetch(`/getMorePosts?from=${to}&to=${10}`)
       responseObj = await response.json()
       let postZone = document.getElementById("postZone")
       responseObj.content.forEach(element => {
