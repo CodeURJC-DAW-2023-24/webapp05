@@ -63,6 +63,17 @@ Trello: https://trello.com/b/xBmOw4l7/daw
 ### Pantalla admin
 ![Pantalla admin.jpg](Pantallas%2FPantalla%20admin.jpg)
 
+## Diagramas
+
+### Diagrama base de datos
+![Pantalla login.jpg](Pantallas%2FPantalla%20login.jpg)
+
+### Diagrama UML
+![Pantalla login.jpg](Pantallas%2FPantalla%20login.jpg)
+
+### Diagrama relaciones
+![Pantalla login.jpg](Pantallas%2FPantalla%20login.jpg)
+
 
 
 
