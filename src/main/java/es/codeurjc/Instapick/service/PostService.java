@@ -51,4 +51,8 @@ public class PostService {
     public List<Post> findByAuthor(User user) {
         return posts.findByAuthor(user);
     }
+
+    public long count() {
+        return posts.count();
+    }
 }

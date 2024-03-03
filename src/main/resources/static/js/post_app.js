@@ -1,7 +1,5 @@
 let btnColor = document.getElementById("colorBtn")
-let postToAdd = 3
-let from = 0
-let to = from + postToAdd
+let to = 0
 let postIdForComments
 
 const sleep = async(millisec) => {
@@ -72,8 +70,11 @@ let observer = new IntersectionObserver((input, observator) => {
 //Ajax function to charge more posts
 async function chargeMorePost(){
     if(!window.location.href.includes("showSpecificPost")){
-      let response = await fetch(`/getMorePosts?from=${from}&to=${to}`)
+      let response = await fetch(`/getNumberOfPosts`)
       let responseObj = await response.json()
+      let n_Post = responseObj
+      response = await fetch(`/getMorePosts?from=${to}&to=${2}`)
+      responseObj = await response.json()
       let postZone = document.getElementById("postZone")
       responseObj.content.forEach(element => {
           postZone.innerHTML += addPost(element)
@@ -83,6 +84,12 @@ async function chargeMorePost(){
       showHildeAnimation()
     }
 }
+
+/*
+async function getNumberOfPosts(){
+  
+  return responseObj
+}*/
 
 function showHideCommentSection(){
   let comments = document.getElementById("commentSection")

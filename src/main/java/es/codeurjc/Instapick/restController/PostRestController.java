@@ -17,6 +17,8 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.swing.text.html.Option;
 import java.util.Optional;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 @RestController
 public class PostRestController {
@@ -34,25 +36,26 @@ public class PostRestController {
         return postsToCharge;
     }
 
-
     @GetMapping("/get_CommentsOfPost")
     public java.util.List<PostComment> getMethodName(@RequestParam long id) {
         Optional<Post> postToGetComments = posts.findById(id);
-        //return postToGetComments.get().getComments();
+        // return postToGetComments.get().getComments();
         return postComments.findByFatherPost(postToGetComments.get());
     }
 
     @GetMapping("/getProfilePost")
     public java.util.List<Post> getMethodName(@RequestParam String name) {
         User user = users.findByUserName(name)
-        .orElseThrow(() -> new UsernameNotFoundException("User not found"));
+                .orElseThrow(() -> new UsernameNotFoundException("User not found"));
         java.util.List<Post> allPost = posts.findByAuthor(user);
-
 
         return allPost;
     }
-    
 
+    @GetMapping("/getNumberOfPosts")
+    public long getMethodName() {
+        return posts.count();
+    }
 
     @PutMapping("likeToPost/{id}")
     public boolean likePost(@PathVariable long id) {
@@ -85,5 +88,5 @@ public class PostRestController {
             return null;
         }
     }
-    
+
 }
