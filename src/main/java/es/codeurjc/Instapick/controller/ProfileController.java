@@ -45,9 +45,26 @@ public class ProfileController {
         model.addAttribute("description",user.getDescription());
 
 
-        // model.addAttribute("email", user.getEmail());
         return "profile";
     }
+
+    @GetMapping("/profile")
+    public String getMethodName(Model model, @RequestParam("name") String username) {
+        User user = users.findByUserName(username)
+        .orElseThrow(() -> new UsernameNotFoundException("User not found"));
+        model.addAttribute("userName",user.getUserName());
+        model.addAttribute("name",user.getName());
+        model.addAttribute("description",user.getDescription());
+
+
+        return "profile";
+    }
+
+
+
+
+
+
     
     // @RequestMapping("/profile/pdf")
     // public ResponseEntity<byte[]> createPDF(@PathVariable String name){
