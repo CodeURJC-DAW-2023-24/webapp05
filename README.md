@@ -66,7 +66,7 @@ Trello: https://trello.com/b/xBmOw4l7/daw
 ## Diagramas
 
 ### Diagrama base de datos
-![Pantalla login.jpg](Pantallas%2FPantalla%20login.jpg)
+![Pantalla login.jpg](Pantallas%2FDiagrama%20base%20de%20datos.png)
 
 ### Diagrama UML
 ![Pantalla login.jpg](Pantallas%2FPantalla%20login.jpg)
