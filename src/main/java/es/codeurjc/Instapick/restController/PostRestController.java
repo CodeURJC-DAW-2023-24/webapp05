@@ -65,9 +65,9 @@ public class PostRestController {
     }
 
     @PutMapping("/addFriend")
-    public boolean addFriendToUser(@RequestParam long me, @RequestParam long who) {
-        Optional<User> myUser = users.findById(me);
-        Optional<User> friendToAdd = users.findById(who);
+    public boolean addFriendToUser(@RequestParam String frienName, HttpServletRequest request) {
+        Optional<User> myUser = users.findByUserName(request.getUserPrincipal().getName());
+        Optional<User> friendToAdd = users.findByUserName(frienName);
         if (myUser.isEmpty() || friendToAdd.isEmpty()) {
             return false;
         }

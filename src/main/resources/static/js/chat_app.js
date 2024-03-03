@@ -47,12 +47,23 @@ function loadChatToHTML(chatMessages){
 
 async function sendMessage(){
     let txtInput = document.getElementById("chatMessageInput").value 
-    let response = await fetch(`/sendChatMessage/${nowChat}?txt=${txtInput}`, {method:"PUT"})
-    let responseObj = await response.json()
-    if(responseObj == false){
-        alert("Error: Message could not be sent")
+
+    if(txtInput === ""){
+        alert("The chats can not be empty")
+    }else{
+        let token = document.getElementById("_csrf").value
+
+        let response = await fetch(`/sendChatMessage/${nowChat}?txt=${txtInput}`, {method:"PUT" , 
+        headers:{
+        "Content-Type": "application/json",
+        "X-CSRF-Token": token, 
+        }})
+        let responseObj = await response.json()
+        if(responseObj == false){
+            alert("Error: Message could not be sent")
+        }
+        document.getElementById("chattingZone").innerHTML += ChatMessageToMyHTML(txtInput)
     }
-    document.getElementById("chattingZone").innerHTML += ChatMessageToMyHTML(txtInput)
 }
 
 function ChatMessageToFrienHTML(txtInput){

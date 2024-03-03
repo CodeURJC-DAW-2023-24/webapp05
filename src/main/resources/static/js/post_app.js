@@ -33,14 +33,17 @@ function changeColor(){
 }
 
 //Follow
-async function followPerson(me, who){
-    let response = await fetch(`/addFriend?me=${me}&who=${who}`,{
-        method: "PUT"
-    })
-    let responseObj = await response.json()
-    if(responseObj == false){
-        alert("Follow Error")
-    }
+async function addFriend(userName){
+  let token = document.getElementById("_csrf").value
+  let response = await fetch(`/addFriend?frienName=${userName}`, {method:"PUT" , 
+  headers:{
+    "Content-Type": "application/json",
+    "X-CSRF-Token": token, 
+  }})
+  let responseObj = await response.json()
+  if(responseObj == false){
+    alert(`Error: Could not add ${userName} to friends`)
+  }
 }
 
 //Send like to post
@@ -118,19 +121,17 @@ async function openComments(id){
 }
 
 async function sendComment(){
+  let token = document.getElementById("_csrf").value
   let text = document.getElementById("inputTextComment").value
-  let response = await fetch(`/sendCommenToPost?id=${postIdForComments}&text=${text}`, {method:"PUT"})
+  let response = await fetch(`/sendCommenToPost?id=${postIdForComments}&text=${text}`, 
+  {method:"PUT" , 
+  headers:{
+    "Content-Type": "application/json",
+    "X-CSRF-Token": token, 
+  }});
   let responseObj = await response.json()
   let commentsZone = document.getElementById("commentsZone")
   commentsZone.innerHTML += jsonCommentToHTML(responseObj)
-}
-
-async function addFriend(userName){
-  let response = fetch(`/addFriend/${userName}`, {method:"PUT"})
-  let responseObj = await response.json()
-  if(responseObj == false){
-    alert(`Error: Could not add ${userName} to friends`)
-  }
 }
 
 //Html post info

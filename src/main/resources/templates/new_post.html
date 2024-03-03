@@ -1,61 +1,65 @@
 <!DOCTYPE html>
 <html lang="en" class="lightTheme" id="htmlMain">
-  <head>
-    <title>InstaPick</title>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="shortcut icon" href="assets/logo-background-removed.png" type="image/x-icon" />
-    <link rel="stylesheet" type="text/css" href="css/post.css" />
-    <link rel="stylesheet" type="text/css" href="css/new_post.css" />
-    <script src="js/post_app.js" defer></script>
-  </head>
 
-  <body>
-    {{>header}}
+<head>
+  <title>InstaPick</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="shortcut icon" href="assets/logo-background-removed.png" type="image/x-icon" />
+  <link rel="stylesheet" type="text/css" href="css/post.css" />
+  <link rel="stylesheet" type="text/css" href="css/new_post.css" />
+  <script src="js/post_app.js" defer></script>
+</head>
 
-    <main class="main-container">
-      <section class="content-container">
-        <div class="content">
+<body>
+  {{>header}}
+
+  <main class="main-container">
+    <section class="content-container">
+      <div class="content">
 
 
-          <div class="posts">
-            <article class="post">
+        <div class="posts">
+          <article class="post">
 
-              <form class="post__footer" action="/addNewPost" method="post" enctype="multipart/form-data">
+            <form class="post__footer" action="/addNewPost" method="post" enctype="multipart/form-data">
 
-                <div class="post__infos">
+              <div class="post__infos">
 
-                  <div id="photo-container" class="post_image">
-                    <div class="col-xl-2 col-lg-2 col-md-3 col-sm-4 col-xs-12" id="add-photo-container">
-                      <div class="add-new-photo first" id="add-photo">
-                        <span><i class="icon-camera"></i></span>
-                      </div>
-                      <input type="file" multiple id="image" name="image" onchange="previewImages(this)">
+                <div id="photo-container" class="post_image">
+                  <div class="col-xl-2 col-lg-2 col-md-3 col-sm-4 col-xs-12" id="add-photo-container">
+                    <div class="add-new-photo first" id="add-photo">
+                      <span><i class="icon-camera"></i></span>
                     </div>
+                    <input type="file" multiple id="image" name="image" onchange="previewImages(this)">
+                    <input type="hidden" name="_csrf" value="{{token}}"/>
                   </div>
+                </div>
 
-                  <div class="post__description">
-                    <a>Descripción:  </a>
-                    <input type="text" name="description" id="description">
-
-                  </div>
-                  <button class="cancel-button">Cancelar</button>
-                  <button class="save-button">Publicar</button>
-
+                <div class="post__description">
+                  <a>Descripción: </a>
+                  <input type="text" name="description" id="description">
 
                 </div>
-              </form>
-            </article>
+                <button class="cancel-button">Cancelar</button>
+                <button class="save-button">Publicar</button>
 
-          </div>
+
+              </div>
+            </form>
+          </article>
+
         </div>
+      </div>
 
 
-      </section>
-    </main>
+    </section>
+  </main>
 
 
-  </body>
-  <script src="https://code.jquery.com/jquery-3.4.0.min.js" integrity="sha256-BJeo0qm959uMBGb65z40ejJYGSgR7REI4+CW1fNKwOg=" crossorigin="anonymous"></script>
-  <script src="js/new_post.js" defer></script>
+</body>
+<script src="https://code.jquery.com/jquery-3.4.0.min.js"
+  integrity="sha256-BJeo0qm959uMBGb65z40ejJYGSgR7REI4+CW1fNKwOg=" crossorigin="anonymous"></script>
+<script src="js/new_post.js"></script>
+
 </html>

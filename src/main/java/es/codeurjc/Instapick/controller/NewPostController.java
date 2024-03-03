@@ -32,7 +32,8 @@ public class NewPostController {
     private UserService users;
 
     @GetMapping("/newPost")
-    public String getNewPost() {
+    public String getNewPost(Model model) {
+        //model.addAttribute("token", );
         return "new_post";
     }
 
