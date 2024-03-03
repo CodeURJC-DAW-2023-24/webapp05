@@ -30,9 +30,10 @@
                 <form action="/login" method="post">
                     <input type="username" name="username" id="username" placeholder="Nombre de usuario">
                     <input type="password" name="password" id="password" placeholder="Contraseña">
+                    <input type="hidden" name="_csrf" value="{{token}}"/>
 
                     {{#incorrect}}
-                    <a>El nombre de ususario o contraseña introducido es incorrecto</a>
+                    <a>El nombre de usuario o contraseña introducido es incorrecto</a>
                     {{/incorrect}}
 
                     <input type="submit" name="submit" value="Entrar">
@@ -42,7 +43,7 @@
                     </div>
 
                     <div class="options">
-                        <a href="#" class="social"> <span><i class="fab fa-facebook-square"></i></span> Entrar con Facebook </a>
+                        <a href="/posts" class="social"> <span><i class="fab fa-facebook-square"></i></span> Entrar como invitado </a>
                         <div class="forget"> <a href="#">¿Olvidaste tu contraseña?</a> </div>
                     </div>
 

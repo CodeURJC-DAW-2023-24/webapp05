@@ -19,6 +19,7 @@ import org.springframework.web.multipart.MultipartFile;
 import java.io.IOException;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.security.Principal;
 import java.util.ArrayList;
 import java.util.Optional;
 
@@ -50,7 +51,18 @@ public class NewPostController {
     }
 
     @GetMapping("/showSpecificPost/{id}")
-    public String getMethodName(@PathVariable long id, Model model) {
+    public String getMethodName(@PathVariable long id, Model model, HttpServletRequest request) {
+
+        Principal principal = request.getUserPrincipal();
+        if(principal != null) {
+            model.addAttribute("logged", true);
+        } else {
+            model.addAttribute("logged", false);
+        }
+
+
+
+
         Optional<Post> postById = posts.findById(id);
         if (postById.isPresent()) {
             ArrayList<Post> postToShow = new ArrayList<>();

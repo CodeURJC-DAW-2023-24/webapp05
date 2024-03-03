@@ -13,6 +13,7 @@ import es.codeurjc.Instapick.service.ChatService;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 
+import java.security.Principal;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -27,6 +28,15 @@ public class ChatsController {
 
     @GetMapping("/chats")
     public String getMethodName(Model model, HttpServletRequest request) {
+
+        Principal principal = request.getUserPrincipal();
+        if(principal != null) {
+            model.addAttribute("logged", true);
+        } else {
+            model.addAttribute("logged", false);
+        }
+
+
         Optional<User> userToGet = users.findByUserName(request.getUserPrincipal().getName());
         List<User> userFriends = users.getFriendsOfUser(userToGet.get());
         model.addAttribute("userName", request.getUserPrincipal().getName());

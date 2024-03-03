@@ -687,7 +687,9 @@
                   <a href="#">{{name}}</a>
                   <span>Followed by x and 6 others</span>
                 </div>
+                {{#logged}}
                 <button class="side-menu__suggestion-button" onclick="addFriend('{{name}}')">Follow</button>
+                {{/logged}}
               </div>
               {{/recommendedUsers}}
             </div>

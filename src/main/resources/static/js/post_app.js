@@ -69,9 +69,6 @@ let observer = new IntersectionObserver((input, observator) => {
 //Ajax function to charge more posts
 async function chargeMorePost(){
     if(!window.location.href.includes("showSpecificPost")){
-      let response = await fetch(`/getNumberOfPosts`)
-      let responseObj = await response.json()
-      let n_Post = responseObj
       response = await fetch(`/getMorePosts?from=${to}&to=${10}`)
       responseObj = await response.json()
       let postZone = document.getElementById("postZone")

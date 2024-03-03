@@ -29,6 +29,7 @@ import es.codeurjc.Instapick.model.Post;
 
 import es.codeurjc.Instapick.model.User;
 import es.codeurjc.Instapick.service.UserService;
+import jakarta.servlet.http.HttpServletRequest;
 
 @Controller
 public class ProfileController {
@@ -49,7 +50,19 @@ public class ProfileController {
     }
 
     @GetMapping("/profile")
-    public String getMethodName(Model model, @RequestParam("name") String username) {
+    public String getMethodName(Model model, @RequestParam("name") String username, HttpServletRequest request) {
+
+            Principal principal = request.getUserPrincipal();
+            if(principal != null) {
+                model.addAttribute("logged", true);
+            } else {
+                model.addAttribute("logged", false);
+            }
+
+
+
+
+
         User user = users.findByUserName(username)
         .orElseThrow(() -> new UsernameNotFoundException("User not found"));
         model.addAttribute("userName",user.getUserName());

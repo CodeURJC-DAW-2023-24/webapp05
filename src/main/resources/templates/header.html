@@ -2,6 +2,7 @@
     <nav class="header__content">
       <div class="header__buttons">
         <a  class="header__home" href="/posts">
+          <input type="hidden" name="_csrf" value="{{token}}"/>
           <img src="/assets/logo-negro.png" class="logo" id="logo">
             <path
               fill-rule="evenodd"
@@ -40,6 +41,7 @@
         </button>
       </div>
 
+      
       <div class="header__search" id="headerSearchInput">
         <input type="text" id="userSearch" placeholder="Search" onkeyup="loadUserSearch()"/>
         <svg
@@ -61,6 +63,7 @@
         </svg>
       </div>
 
+      {{#logged}}
       <div class="header__buttons header__buttons--mobile">
         <a href="#">
           <svg
@@ -153,7 +156,7 @@
             />
           </svg>
         </a>
-        <a href="/yourProfile">
+        <a href="/posts">
           <svg
             width="24"
             height="24"
@@ -191,7 +194,7 @@
         <a href="/newPost">
          <img src="/assets/plus_bk_removed.png" class="plusbutton">
         </a>
-        <a href="/login">
+        <a href="/logout">
           <svg
             width="24"
             height="24"
@@ -214,6 +217,7 @@
           </div>
         </button>
       </div>
+      {{/logged}}
     </nav>
     <source src="/js/header.js">
   </header>
