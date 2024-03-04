@@ -162,7 +162,24 @@ Sera necesario tener instalados todos estos programas para que la aplicación co
 5. [PostController.java](src%2Fmain%2Fjava%2Fes%2Fcodeurjc%2FInstapick%2Fcontroller%2FPostController.java)
 
 
+## Alvaro Sepñulveda Crespo
 
-
+### Descripción textual de las tareas realizadas en la fase:
+- Creacion de diagramas y herramientas auxiliares
+- Ayuda intento de mejora de chats.
+- Intento de implementacion de algoritmo de busqueda avanzada.
+### Listado de los 5 commits más significativos:
+1. [Adeed files via upload, Diagrama de base de datos] (https://github.com/CodeURJC-DAW-2023-24/webapp05/commit/c8f9f982c00e78)
+2. [Adeed files via upload, Diagrama de clases] (https://github.com/CodeURJC-DAW-2023-24/webapp05/commit/75d319e8a7e470)
+3. [Adeed files via upload, Diagrama de modelo-vista-controlador](https://github.com/CodeURJC-DAW-2023-24/webapp05/commit/75d319e8a7e470)
+4. [Adeed files via upload, Resto de diagramas] (https://github.com/CodeURJC-DAW-2023-24/webapp05/commit/1bf7a5711b8471)
+5. [Adeed files via upload, Diagrama de base de datos completo] (https://github.com/CodeURJC-DAW-2023-24/webapp05/commit/9b0287fcea774f)
+### Listado de los 5 ficheros en los que más haya participado:
+1. [Chat.java]
+(src%2Fmain%2Fjava%2Fes%2Fcodeurjc%2FInstapick%2Frepository%2FChat.java)
+3. [Pantallas.java](src%2Fmain%2Fjava%2Fes%2Fcodeurjc%2FInstapick%2Fservice%2FPostService.java)
+4. [UsertRepository.java](src%2Fmain%2Fjava%2Fes%2Fcodeurjc%2FInstapick%2Frepository%2FUserRepository.java)
+5. [UserController.java](src%2Fmain%2Fjava%2Fes%2Fcodeurjc%2FInstapick%2Fmodel%2FUserController.java)
+6. [ChatController.java](src%2Fmain%2Fjava%2Fes%2Fcodeurjc%2FInstapick%2Fcontroller%2FChatController.java)
 
 
