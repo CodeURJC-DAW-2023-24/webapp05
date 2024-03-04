@@ -36,7 +36,10 @@ public class User {
         this.email = email;
         this.description = "";
         this.posts = new ArrayList<>();
+        this.rol = Rol.normal;
     }
+
+
 
     @ManyToMany
     @JsonIgnore

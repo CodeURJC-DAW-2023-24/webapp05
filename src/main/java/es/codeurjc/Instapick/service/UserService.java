@@ -59,4 +59,8 @@ public class UserService {
     public Optional<User> findByName(String name) {
         return users.findByName(name);
     }
+
+    public  List<User> getNotAdmin(){
+        return users.getNotAdmin();
+    }
 }

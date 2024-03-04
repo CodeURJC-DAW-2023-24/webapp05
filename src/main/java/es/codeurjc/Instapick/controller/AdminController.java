@@ -27,9 +27,7 @@ public class AdminController {
         } else {
             model.addAttribute("logged", false);
         }
-
-
-        List<User> allUsers = users.findAll();
+        List<User> allUsers = users.getNotAdmin();
         model.addAttribute("usersToBan", allUsers);
         return "admin";
     }

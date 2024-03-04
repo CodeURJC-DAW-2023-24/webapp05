@@ -21,11 +21,6 @@ import org.springframework.security.web.SecurityFilterChain;
 @EnableWebSecurity
 public class SecurityConfig {
 
-    @Value("${security.user}")
-    private String username;
-
-    @Value("${security.password}")
-    private String encodedPassword;
 
     @Autowired
     RepositoryUserDetailsService userDetailsService;

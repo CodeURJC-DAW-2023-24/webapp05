@@ -63,7 +63,7 @@ public class ProfileController {
 
 
 
-        User user = users.findByUserName(username)
+        User user = users.findByName(username)
         .orElseThrow(() -> new UsernameNotFoundException("User not found"));
         model.addAttribute("userName",user.getUserName());
         model.addAttribute("name",user.getName());

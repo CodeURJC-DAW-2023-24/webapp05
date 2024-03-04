@@ -21,4 +21,7 @@ public interface UserRepository extends JpaRepository<User, Long> {
     public List<User> getSearchedUsers(String name);
 
     public Optional<User> findByName(String name);
+
+    @Query("SELECT u FROM User u WHERE u.rol = 0")
+    public List<User> getNotAdmin();
 }

@@ -8,7 +8,6 @@ import es.codeurjc.Instapick.service.PostService;
 import es.codeurjc.Instapick.service.UserService;
 import jakarta.servlet.http.HttpServletRequest;
 
-import org.hibernate.mapping.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -16,6 +15,7 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.web.bind.annotation.*;
 
 import javax.swing.text.html.Option;
+import java.util.List;
 import java.util.Optional;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -41,6 +41,12 @@ public class PostRestController {
         Optional<Post> postToGetComments = posts.findById(id);
         // return postToGetComments.get().getComments();
         return postComments.findByFatherPost(postToGetComments.get());
+    }
+
+    @GetMapping("/getMyName")
+    public String isOwner(HttpServletRequest request){
+        String myName = request.getUserPrincipal().getName();
+        return myName;
     }
 
     @GetMapping("/getProfilePost")
