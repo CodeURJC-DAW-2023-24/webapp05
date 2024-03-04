@@ -1,5 +1,7 @@
 package es.codeurjc.Instapick.controller;
 
+import es.codeurjc.Instapick.algorithms.SearchFriends;
+import es.codeurjc.Instapick.model.User;
 import es.codeurjc.Instapick.service.UserService;
 import jakarta.servlet.http.HttpServletRequest;
 
@@ -13,6 +15,7 @@ import es.codeurjc.Instapick.model.Post;
 import es.codeurjc.Instapick.service.PostService;
 
 import java.security.Principal;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -32,6 +35,8 @@ public class PostController {
     @Autowired
     private UserService users;
 
+    private SearchFriends sfr = new SearchFriends();
+
     @GetMapping("/posts")
     public String getMethodName(Model model, HttpServletRequest request) {
         Principal principal = request.getUserPrincipal();
@@ -40,7 +45,17 @@ public class PostController {
         } else {
             model.addAttribute("logged", false);
         }
-        model.addAttribute("recommendedUsers", users.findAll());
+        List<Long> keys = sfr.doOperation(users.getFriendsOfUser(users.findByName(request.getUserPrincipal().getName()).get()));
+        List<User> usersToAdd = new ArrayList<>();
+        int sizeOfList = 4;
+        if (sizeOfList > keys.size()){
+            sizeOfList = keys.size();
+        }
+        for(int i = 0; i < sizeOfList; i++){
+            usersToAdd.add(users.findById(keys.get(i)).get());
+        }
+        model.addAttribute("recommendedUsers", usersToAdd);
+        //model.addAttribute("recommendedUsers", users.findAll());
         //System.out.println(users.findAll());
         return "post";
     }
