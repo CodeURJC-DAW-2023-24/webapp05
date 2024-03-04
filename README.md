@@ -183,3 +183,22 @@ Sera necesario tener instalados todos estos programas para que la aplicación co
 6. [ChatController.java](src%2Fmain%2Fjava%2Fes%2Fcodeurjc%2FInstapick%2Fcontroller%2FChatController.java)
 
 
+## Adrián Aguilar Rodríguez
+
+### Descripción textual de las tareas realizadas en la fase:
+- Diseño de templates
+- Añadir descripciones a las clases
+### Listado de los 5 commits más significativos:
+1. [Added getters to Post] (https://github.com/CodeURJC-DAW-2023-24/webapp05/commit/67461ba523eb8cd78f922645bb4aae15b2643e4a)
+2. [Error page created] (https://github.com/CodeURJC-DAW-2023-24/webapp05/commit/6ca04b81694032fbf5b4b1e8a500ed466c8d8666)
+3. [Added getters to Post](https://github.com/CodeURJC-DAW-2023-24/webapp05/commit/67461ba523eb8cd78f922645bb4aae15b2643e4a)
+4. [login placeholder message now requires username to login] (https://github.com/CodeURJC-DAW-2023-24/webapp05/commit/4134bd446b7ad502e25d5eae2e4483fe73a1b40a)
+5. [Type mistmach in user.java corrected] (https://github.com/CodeURJC-DAW-2023-24/webapp05/commit/ff2a8f3304040a46023cfb5e87f27daed27f834e)
+### Listado de los 5 ficheros en los que más haya participado:
+1. [User.java](https://github.com/CodeURJC-DAW-2023-24/webapp05/blob/Fase-2/src/main/java/es/codeurjc/Instapick/model/User.java)
+2. [error.html](https://github.com/CodeURJC-DAW-2023-24/webapp05/blame/Fase-2/src/main/resources/templates/error.html)
+3. [header.html](https://github.com/CodeURJC-DAW-2023-24/webapp05/blame/Fase-2/src/main/resources/templates/header.html)
+4. [login.html](https://github.com/CodeURJC-DAW-2023-24/webapp05/blame/Fase-2/src/main/resources/templates/log_in.html)
+5. [signup.html](https://github.com/CodeURJC-DAW-2023-24/webapp05/blame/Fase-2/src/main/resources/templates/signup.html)
+
+
