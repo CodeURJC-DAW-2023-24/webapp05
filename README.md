@@ -141,6 +141,25 @@ Sera necesario tener instalados todos estos programas para que la aplicación co
 5. [PostRestController.java](src%2Fmain%2Fjava%2Fes%2Fcodeurjc%2FInstapick%2FrestController%2FPostRestController.java)
 
 
+## Ángel Murciano Baena
+
+### Descripción textual de las tareas realizadas en la fase:
+- Arreglo de imagenes a la hora de crear un nuevo post.
+- Arreglo puntual de iconos del header.
+- Colaboración en la implementación de la paginación de posts.
+
+### Listado de los 5 commits más significativos:
+1. [Adding a new post now loads pictures properly](https://github.com/CodeURJC-DAW-2023-24/webapp05/commit/3550ad90af81fddeeb37931b1a10cbb76b24bd51)
+2. [New Post button changes according to page theme](https://github.com/CodeURJC-DAW-2023-24/webapp05/commit/12bd57911b60f99246d56d56a75704722477a6aa)
+3. [Creation of search query functions](https://github.com/CodeURJC-DAW-2023-24/webapp05/commit/db27733b3ab879e3b777a69112230d5bcc44dfcf)
+4. [Addition of unpaginated and paginated queries](https://github.com/CodeURJC-DAW-2023-24/webapp05/commit/01f0e92c47f3403b26df32376d614bae6cdf1aa0)
+5. [Pagination of Post page](https://github.com/CodeURJC-DAW-2023-24/webapp05/commit/751cb47ae2e666a266c107e52cb3ff29c52d284f)
+### Listado de los 5 ficheros en los que más haya participado:
+1. [PostRepository.java](src%2Fmain%2Fjava%2Fes%2Fcodeurjc%2FInstapick%2Frepository%2FPostRepository.java)
+2. [PostService.java](src%2Fmain%2Fjava%2Fes%2Fcodeurjc%2FInstapick%2Fservice%2FPostService.java)
+3. [PostCommentRepository.java](src%2Fmain%2Fjava%2Fes%2Fcodeurjc%2FInstapick%2Frepository%2FPostCommentRepository.java)
+4. [User.java](src%2Fmain%2Fjava%2Fes%2Fcodeurjc%2FInstapick%2Fmodel%2FUser.java)
+5. [PostController.java](src%2Fmain%2Fjava%2Fes%2Fcodeurjc%2FInstapick%2Fcontroller%2FPostController.java)
 
 
 
