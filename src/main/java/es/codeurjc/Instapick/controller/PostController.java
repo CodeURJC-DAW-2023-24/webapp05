@@ -45,18 +45,20 @@ public class PostController {
         } else {
             model.addAttribute("logged", false);
         }
-        List<Long> keys = sfr.doOperation(users.getFriendsOfUser(users.findByName(request.getUserPrincipal().getName()).get()));
-        List<User> usersToAdd = new ArrayList<>();
-        int sizeOfList = 4;
-        if (sizeOfList > keys.size()){
-            sizeOfList = keys.size();
+        if(request.getUserPrincipal() != null){
+            List<Long> keys = sfr.doOperation(users.getFriendsOfUser(users.findByName(request.getUserPrincipal().getName()).get()));
+            List<User> usersToAdd = new ArrayList<>();
+            int sizeOfList = 4;
+            if (sizeOfList > keys.size()){
+                sizeOfList = keys.size();
+            }
+            for(int i = 0; i < sizeOfList; i++){
+                usersToAdd.add(users.findById(keys.get(i)).get());
+            }
+            model.addAttribute("recommendedUsers", usersToAdd);
         }
-        for(int i = 0; i < sizeOfList; i++){
-            usersToAdd.add(users.findById(keys.get(i)).get());
-        }
-        model.addAttribute("recommendedUsers", usersToAdd);
-        //model.addAttribute("recommendedUsers", users.findAll());
-        //System.out.println(users.findAll());
+        
+
         return "post";
     }
 
