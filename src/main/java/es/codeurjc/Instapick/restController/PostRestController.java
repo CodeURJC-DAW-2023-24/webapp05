@@ -43,6 +43,12 @@ public class PostRestController {
         return postComments.findByFatherPost(postToGetComments.get());
     }
 
+    @GetMapping("/getAllPosts")
+    public java.util.List<Post> getAllPosts() {
+        List<Post> allPosts = posts.findAll();
+        return allPosts;
+    }
+
     @GetMapping("/getMyName")
     public String isOwner(HttpServletRequest request){
         String myName = request.getUserPrincipal().getName();

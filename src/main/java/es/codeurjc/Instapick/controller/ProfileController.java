@@ -38,7 +38,15 @@ public class ProfileController {
     UserService users;
 
     @GetMapping("/yourProfile")
-    public String getMethodName(Model model, Principal principal) {
+    public String getMethodName(Model model, Principal principal, HttpServletRequest request) {
+
+        Principal principal1 = request.getUserPrincipal();
+        if(principal1 != null) {
+            model.addAttribute("logged", true);
+        } else {
+            model.addAttribute("logged", false);
+        }
+
         User user = users.findByUserName(principal.getName())
         .orElseThrow(() -> new UsernameNotFoundException("User not found"));
         model.addAttribute("userName",user.getUserName());

@@ -67,7 +67,7 @@ public class SecurityConfig {
                         .requestMatchers("/").permitAll()
                         .requestMatchers("/signup", "/addUser", "/posts", "/getMorePosts", "/getNumberOfPosts",
                                 "/imagePost/*",
-                                "/getUserForSearch", "/profile", "/getProfilePost", "/profile", "/yourProfile").permitAll()
+                                "/getUserForSearch", "/profile", "/getProfilePost", "/profile", "/yourProfile", "/graph").permitAll()
                         .requestMatchers("/css/**", "/js/**", "/img/**", "/assets/**").permitAll()
                         // PRIVATE PAGES
                         .requestMatchers("/newPost", "/addNewPost", "/addFriend", "/sendChatMessage/*").hasAnyRole("normal", "admin")

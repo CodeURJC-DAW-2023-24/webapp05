@@ -6,6 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>InstaPick</title>
   <link rel="stylesheet" type="text/css" href="css/Graphic.css" />
+  <script src="https://cdn.plot.ly/plotly-2.29.1.min.js" charset="utf-8"></script>
   
 
 </head>
@@ -18,133 +19,18 @@
 <!--Profile-->
 
 <section class="seccion-perfil-usuario">
-  <div class="perfil-usuario-header">
-    <div class="perfil-usuario-portada">
-      <div class="perfil-usuario-avatar">
-        <a href="#" class="side-menu__suggestion-avatar">
-          <img src="assets/Bad-user.jpg" alt="Bad Picture" />
-        </a>
-      </div>
-    </div>
-  </div>
-  <div class="perfil-usuario-body">
-    <div class="perfil-usuario-bio">
-      <h3 class="titulo">FamousUser7</h3>
-      <p class="texto">30.000 seguidores</p>
-    </div>
-    <div class="perfil-usuario-footer">
 
-      <div class="container">
-        <h3 class="titulo">Account stats</h3>
-        <div class="row">
-          <div class="post__description">
-            <span>
-              <a
-                class="post__name--underline"
-                href=""
-                target="_blank"
-                >Followers adquired:</a
-              >
-              +10.281 followers
-            </span>
-            
-          </div>
-        </div>
-        <div class="row">
-          <div class="post__description">
-            <span>
-              <a
-                class="post__name--underline"
-                href=""
-                target="_blank"
-                >---------------------------------------------------------</a
-              >
-              
-            </span>
-            
-          </div>
-        </div>
-        <div class="row">
-          <div class="post__description">
-            <span>
-              <a
-                class="post__name--underline"
-                href=""
-                target="_blank"
-                >Likes:</a
-              >
-              201.129 likes
-            </span>
-            
-          </div>
-        </div>
-        <div class="row">
-          <div class="post__description">
-            <span>
-              <a
-                class="post__name--underline"
-                href=""
-                target="_blank"
-                >---------------------------------------------------------</a
-              >
-              
-            </span>
-            
-          </div>
-        </div>
-        <div class="row">
-          <div class="post__description">
-            <span>
-              <a
-                class="post__name--underline"
-                href=""
-                target="_blank"
-                >Comments:</a
-              >
-              10.234 comments
-            </span>
-            
-          </div>
-        </div>
 
-        <div class="row">
-          <div class="post__description">
-            <span>
-              <a
-                class="post__name--underline"
-                href=""
-                target="_blank"
-                >---------------------------------------------------------</a
-              >
-              
-            </span>
-            
-          </div>
-        </div>
-        <div class="row">
-          <div class="post__description">
-            <span>
-              <a
-                class="post__name--underline"
-                href=""
-                target="_blank"
-                >Most viewed profile:</a
-              >
-              MadkonUser29
-            </span>
-            
-          </div>
-        </div>
-        
+      <h3 class="titulo">Post stats</h3>
+      <div id="plotlyChart">
+
       </div>
 
-
-    </div>
-  </div>
 </section>
 
+<script src="js/graphic_app.js" defer></script>
 </body>
 <link rel="stylesheet" type="text/css" href="css/post.css" />
-<script src="js/graphic_app.js" defer></script>
+
 
 </html>
