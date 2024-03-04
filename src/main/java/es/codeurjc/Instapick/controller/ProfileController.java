@@ -87,55 +87,5 @@ public class ProfileController {
 
 
     
-    // @RequestMapping("/profile/pdf")
-    // public ResponseEntity<byte[]> createPDF(@PathVariable String name){
-    //     String outputFilePath = "document.pdf";
-    //     UserService users = new UserService();
-    //     User user = users.findByUserName(name);
-        
-    //     try{
-    //         //Crear un nuevo documento PDF
-    //         PdfWriter writer = new PdfWriter(outputFilePath);
-    //         PdfDocument pdfDoc = new PdfDocument(writer);
-    //         Document doc = new Document(pdfDoc);
-    //         //Agregar el texto
-    //         Paragraph para = new Paragraph("Cuenta de usuario"+user.getUserName());
-    //         doc.add(para);
-    //         para = new Paragraph("Nombre de usuario"+user.getName());
-    //         doc.add(para);
-    //         para = new Paragraph("Email"+user.getEmail());
-    //         doc.add(para);
-    //         //Guardar el documento
-    //         doc.close();
-    //         /* Setup Source and target I/O streams */
-    //         //ByteArrayInputStream source = new ByteArrayInputStream();
-    //         FileInputStream source = new FileInputStream(outputFilePath);
-    //         //ByteArrayOutputStream target = new ByteArrayOutputStream();
-    //         /* Call convert method */
-    //         //HtmlConverter.convertToPdf(orderHtml, target, converterProperties);  
-    //         /* extract output as bytes */
-    //         byte[] bytes = null;
-    //         try {
-    //             bytes = source.readAllBytes();
-    //         } catch (IOException e) {
-    //             // TODO Auto-generated catch block
-    //             e.printStackTrace();
-    //         }
-    //         try {
-    //             source.close();
-    //         } catch (IOException e) {
-    //             // TODO Auto-generated catch block
-    //             e.printStackTrace();
-    //         }
-    //         //byte[] bytes = target.toByteArray();
-    //         /* Send the response as downloadable PDF */
-    //         return ResponseEntity.ok().header(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=document.pdf") .contentType(MediaType.APPLICATION_PDF) .body(bytes);
-
-    //     } catch(FileNotFoundException e){
-    //         e.printStackTrace();
-    //         //https://springhow.com/spring-boot-pdf-generation/
-    //     }
-    //     return null;
-        
-    // }
+    
 }

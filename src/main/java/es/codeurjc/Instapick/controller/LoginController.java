@@ -30,6 +30,13 @@ public class LoginController {
         return "log_in";
     }
 
+    @GetMapping("/")
+    public String getLoginBar(Model model) {
+
+
+        return "log_in";
+    }
+
     @PostMapping("/login")
     public String postLogin(Model model, HttpServletRequest request) {
         
