@@ -13,21 +13,20 @@ import java.util.Optional;
 
 @RestController
 public class GeneralRestController {
-
     @Autowired
     private UserService users;
 
     @GetMapping("/getUserForSearch")
-    public List<User> getUsersBySearch(@RequestParam String name) {
+    public List<User> getUsersBySearch(@RequestParam String name){ // Retrieve users in search function
         List<User> usersSearch = users.getSearchedUsers(name);
         return usersSearch;
     }
 
     @DeleteMapping("/banUser")
-    public boolean deleteUser(@RequestParam long id) {
+    public boolean deleteUser(@RequestParam long id){ // Ban user from platform
         users.deleteById(id);
         Optional<User> userToDelete = users.findById(id);
-        if (userToDelete.isPresent()) {
+        if (userToDelete.isPresent()){ // Check user's existence
             return false;
         }
         return true;

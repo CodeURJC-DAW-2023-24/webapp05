@@ -1,7 +1,6 @@
 package es.codeurjc.Instapick.security;
 
 import org.springframework.context.annotation.Configuration;
-import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
@@ -16,18 +15,17 @@ import jakarta.servlet.http.HttpServletResponse;
 public class CSRFHandlerConfiguration implements WebMvcConfigurer {
 
     @Override
-    public void addInterceptors(InterceptorRegistry registry) {
+    public void addInterceptors(InterceptorRegistry registry){ // Adding a CSRF Handler Interceptor
         registry.addInterceptor(new CSRFHandlerInterceptor());
-        }
+    }
 }
 
 class CSRFHandlerInterceptor implements HandlerInterceptor {
     @Override
-    public void postHandle(final HttpServletRequest request,final HttpServletResponse response, final Object handler,
-    final ModelAndView modelAndView) throws Exception {
-        if (modelAndView != null) {
+    public void postHandle(final HttpServletRequest request,final HttpServletResponse response, final Object handler, final ModelAndView modelAndView) throws Exception{ // Post managing
+        if (modelAndView != null) { // Check both model and view's existence
             CsrfToken token = (CsrfToken) request.getAttribute("_csrf");
-            if (token != null) {
+            if (token != null) { // Check token's existence
                 modelAndView.addObject("token", token.getToken());
             }
         }

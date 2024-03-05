@@ -1,7 +1,6 @@
 package es.codeurjc.Instapick.restController;
 
 import es.codeurjc.Instapick.service.PostService;
-import org.springframework.data.domain.Page;
 import org.springframework.web.bind.annotation.RestController;
 
 import es.codeurjc.Instapick.model.PostComment;
@@ -15,15 +14,13 @@ import java.util.List;
 
 @RestController
 public class PostCommentRestController {
-
     @Autowired
     private PostCommentService postComments;
-
     @Autowired
     private PostService posts;
 
     @GetMapping("/getCommentsOfPost")
-    public List<PostComment> getMethodName(@RequestParam long id) {
+    public List<PostComment> getPostsComments(@RequestParam long id){ // Retrieve posts' comments 
         List<PostComment> postCommentsOfFatherPost = postComments.findByFatherPost(posts.findById(id).get());
         return postCommentsOfFatherPost;
     }
