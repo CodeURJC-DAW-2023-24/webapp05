@@ -12,33 +12,31 @@ import java.util.Optional;
 
 @Service
 public class ChatService {
-
     @Autowired
     private ChatRepository chats;
 
-    public void save(Chat chat) {
+    public void save(Chat chat){ // Save chat
         chats.save(chat);
     }
 
-    public List<Chat> findAll() {
+    public List<Chat> findAll(){ // Find all private chats
         return chats.findAll();
     }
 
-    public Optional<Chat> findById(Long id) {
+    public Optional<Chat> findById(Long id){ // Find private chat by ID
         return chats.findById(id);
     }
 
-    public void replace(Chat updatedChat) {
+    public void replace(Chat updatedChat){ // Replace/Update private chat
         chats.findById(updatedChat.getId()).orElseThrow();
-
         chats.save(updatedChat);
     }
 
-    public void deleteById(Long id) {
+    public void deleteById(Long id){ // Delete private chat by ID
         chats.deleteById(id);
     }
 
-    public Optional<Chat> getChatOfFriends(User u1, User u2){
+    public Optional<Chat> getChatOfFriends(User u1, User u2){ // Retrieve private chat between two users
         return chats.getChatOfFriends(u1,u2);
     }
 
