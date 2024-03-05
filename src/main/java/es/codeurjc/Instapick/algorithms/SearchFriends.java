@@ -9,24 +9,22 @@ import java.util.stream.Collectors;
 public class SearchFriends {
 
 
-    public List<Long> doOperation(List<User> friendsOfUser){
-        List<User> futureFriends = new ArrayList<>();
+    public List<Long> doOperation(List<User> friendsOfUser){ // (Map -> List) Sort friends list
         Map<Long, Integer> bestFriends = get4BestFrieds(friendsOfUser);
         List<Long> keys = bestFriends.entrySet()
                 .stream()
                 .sorted(Comparator.comparing(Map.Entry::getValue))
                 .map(Map.Entry::getKey)
                 .collect(Collectors.toList());
-        //Do soething
         return keys;
     }
 
-    private Map<Long, Integer> get4BestFrieds(List<User> friedns){
+    private Map<Long, Integer> get4BestFrieds(List<User> friedns){ // Get the 4 best friends from each of the user's friends
         Map<Long, Integer> reapetedUsers = new HashMap<>();
         for(User userFriends : friedns){
-            for (User user : userFriends.getFriends()){
+            for (User user : userFriends.getFriends()){ // Check for duplicate users
                 if(reapetedUsers.containsKey(user.getId())){
-                    reapetedUsers.replace(user.getId(), reapetedUsers.get(user.getId()) + 1);
+                    reapetedUsers.replace(user.getId(), reapetedUsers.get(user.getId()) + 1); // More chances of appearing in suggestions
                 }else {
                     reapetedUsers.put(user.getId(), 1);
                 }
