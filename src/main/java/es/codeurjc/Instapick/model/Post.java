@@ -10,85 +10,82 @@ import java.util.List;
 
 @Entity
 public class Post {
-
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @JsonView
-    private long id;
+    private long id; // Post ID
     @JsonView
-    private int likes; // cantidad de gente a la que le gusta
+    private int likes; // Likes amount
     @JsonView
-    private String description;
-
+    private String description; // Post description
     @Lob
     @JsonIgnore
-    private Blob multimedia;
-
+    private Blob multimedia; // Post image
     @ManyToOne
-    private User author;
-
+    private User author; // Post author
     @OneToMany(orphanRemoval = true, cascade = CascadeType.ALL, mappedBy = "fatherPost")
     @JsonIgnore
-    private List<PostComment> comments;
+    private List<PostComment> comments; // Post comments list
 
     public void addLike() {
         this.likes++;
     }
 
-    public Post() {
-    }
+    /* GETTERS - SETTERS */
+        public Post() { 
+        }
 
-    public Post(String description, Blob multimedia, User author) {
-        this.description = description;
-        this.multimedia = multimedia;
-        this.author = author;
-    }
+        public Post(String description, Blob multimedia, User author) {
+            this.description = description;
+            this.multimedia = multimedia;
+            this.author = author;
+        }
 
-    public long getId() {
-        return id;
-    }
+        public long getId() {
+            return id;
+        }
 
-    public void setId(long id) {
-        this.id = id;
-    }
+        public void setId(long id) {
+            this.id = id;
+        }
 
-    public int getLikes() {
-        return likes;
-    }
+        public int getLikes() {
+            return likes;
+        }
 
-    public void setLikes(int likes) {
-        this.likes = likes;
-    }
+        public void setLikes(int likes) {
+            this.likes = likes;
+        }
 
-    public String getDescription() {
-        return description;
-    }
+        public String getDescription() {
+            return description;
+        }
 
-    public void setDescription(String description) {
-        this.description = description;
-    }
+        public void setDescription(String description) {
+            this.description = description;
+        }
 
-    public Blob getMultimedia() {
-        return multimedia;
-    }
+        public Blob getMultimedia() {
+            return multimedia;
+        }
 
-    public void setMultimedia(Blob multimedia) {
-        this.multimedia = multimedia;
-    }
+        public void setMultimedia(Blob multimedia) {
+            this.multimedia = multimedia;
+        }
 
-    public User getAuthor() {
-        return author;
-    }
+        public User getAuthor() {
+            return author;
+        }
 
-    public void setAuthor(User author) {
-        this.author = author;
-    }
+        public void setAuthor(User author) {
+            this.author = author;
+        }
 
-    public List<PostComment> getComments() {
-        return comments;
-    }
+        public List<PostComment> getComments() {
+            return comments;
+        }
 
-    public void setComments(List<PostComment> comments) {
-        this.comments = comments;
-    }
+        public void setComments(List<PostComment> comments) {
+            this.comments = comments;
+        }
 }

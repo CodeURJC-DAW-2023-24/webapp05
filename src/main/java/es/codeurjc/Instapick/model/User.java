@@ -6,122 +6,116 @@ import jakarta.persistence.*;
 import java.sql.Blob;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 
 @Entity
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private long id;
-    private String userName; //nombre de cuenta del usuario
+    private long id; // User ID
+    private String userName; // User's username
     @JsonIgnore
-    private String encodedPassword;
-    private String name; //nombre real de usuario
-    private String description = "";
-    private String email;
-    private Rol rol;
+    private String encodedPassword; // User's encrypted password
+    private String name; // User's real name
+    private String description = ""; // User's description
+    private String email; // User's e-mail
+    private Rol rol; // User's role account
     @Lob
     @JsonIgnore
-    private Blob avatar;
-
-
-    public User() {
-
-    }
-
-    public User(String userName, String password, String email, String name) {
-        this.userName = userName;
-        this.encodedPassword = password;
-        this.name = name;
-        this.email = email;
-        this.description = "";
-        this.posts = new ArrayList<>();
-        this.rol = Rol.normal;
-    }
-
-
-
+    private Blob avatar; // User's avatar image
     @ManyToMany
     @JsonIgnore
-    private List<User> friends;
+    private List<User> friends; // User's friend list
     @OneToMany(orphanRemoval = true ,cascade = CascadeType.ALL, mappedBy = "author")
     @JsonIgnore
-    private List<Post> posts;
+    private List<Post> posts; // User's posts (Linked to user)
     @ManyToMany
     @JsonIgnore
-    private List<Chat> chats;
+    private List<Chat> chats; // User's private chats (Linked to user)
 
-    public void addFriend(User friend){
-        this.friends.add(friend);
-    }
+    /* GETTERS - SETTERS */
+        public User() {}
 
-    public long getId() {
-        return id;
-    }
+        public User(String userName, String password, String email, String name) {
+            this.userName = userName;
+            this.encodedPassword = password;
+            this.name = name;
+            this.email = email;
+            this.description = "";
+            this.posts = new ArrayList<>();
+            this.rol = Rol.normal;
+        }
 
-    public void setId(long id) {
-        this.id = id;
-    }
+        public void addFriend(User friend){
+            this.friends.add(friend);
+        }
 
-    public String getUserName(){
-        return userName;
-    }
-    public void setUserName(String userName){
-        this.userName=userName;
-    }
+        public long getId() {
+            return id;
+        }
 
-    public String getName(){
-        return name;
-    }
+        public void setId(long id) {
+            this.id = id;
+        }
 
-    public void setName(String name){
-        this.name=name;
-    }
+        public String getUserName(){
+            return userName;
+        }
+        public void setUserName(String userName){
+            this.userName=userName;
+        }
 
-    public String getEmail(){
-        return email;
-    }
+        public String getName(){
+            return name;
+        }
 
-    public void setEmail(String email){
-        this.email=email;
-    }
+        public void setName(String name){
+            this.name=name;
+        }
 
-    public Rol getRol(){
-        return rol;
-    }
+        public String getEmail(){
+            return email;
+        }
 
-    public List<User> getFriends(){
-        return friends;
-    }
+        public void setEmail(String email){
+            this.email=email;
+        }
 
-    public List<Post> getPosts(){
-        return posts;
-    }
-    public String getEncodedPassword() {
-        return encodedPassword;
-    }
+        public Rol getRol(){
+            return rol;
+        }
 
-    public Blob getAvatar() {
-        return avatar;
-    }
+        public List<User> getFriends(){
+            return friends;
+        }
 
-    public List<Chat> getChats() {
-        return chats;
-    }
+        public List<Post> getPosts(){
+            return posts;
+        }
+        public String getEncodedPassword() {
+            return encodedPassword;
+        }
 
-    public void setRol(Rol rol) {
-        this.rol = rol;
-    }
+        public Blob getAvatar() {
+            return avatar;
+        }
 
-    public String getDescription() {
-        return description;
-    }
+        public List<Chat> getChats() {
+            return chats;
+        }
 
-    public void setPassword(String password) {
-        this.encodedPassword = password;
-    }
+        public void setRol(Rol rol) {
+            this.rol = rol;
+        }
 
-    public void savePost(Post newPost) {
-        this.posts.add(newPost);
-    }
+        public String getDescription() {
+            return description;
+        }
+
+        public void setPassword(String password) {
+            this.encodedPassword = password;
+        }
+
+        public void savePost(Post newPost) {
+            this.posts.add(newPost);
+        }
 }
