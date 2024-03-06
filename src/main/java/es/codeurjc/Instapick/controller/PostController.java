@@ -31,7 +31,7 @@ public class PostController {
             model.addAttribute("logged", false);
         }
         if(request.getUserPrincipal() != null){ // Show friend suggestions if user is logged in as a non-guest
-            List<Long> keys = sfr.doOperation(users.getFriendsOfUser(users.findByName(request.getUserPrincipal().getName()).get()));
+            List<Long> keys = sfr.doOperation(users.getFriendsOfUser(users.findByUserName(request.getUserPrincipal().getName()).get()));
             List<User> usersToAdd = new ArrayList<>();
             int sizeOfList = 4;
             if (sizeOfList > keys.size()){
